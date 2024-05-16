@@ -1,2 +1,2 @@
 # Game
-Lorem Dolor
+Amaizing Game website
