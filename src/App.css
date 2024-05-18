@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Raleway:wght@100;400&family=Russo+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+.font-poppins {
+  font-family: "Poppins", sans-serif !important;
+}
+
+p,
+a,
+li,
+span,
+input,
+label,
+textarea {
+  font-family: "Raleway", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #293132;
+}
+
+.bg-highlight {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(1, 1, 1, 0.3),
+    rgba(0, 0, 0, 1)
+  );
+}
+
+.glass-effect {
+  background: rgba(9, 0, 0, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(9, 0, 0, 0.3);
+}
+
+.nav-bg {
+  background: rgba(16, 16, 16, 0.87);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 45px;
+  padding-left: 45px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.overlay-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.628);
+}
+
+/* Footer */
+footer {
+  height: 450px;
+  object-fit: contain;
+}
+
+.footer-wrapper {
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+}
