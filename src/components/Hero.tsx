@@ -1,6 +1,6 @@
 // import { Link } from "react-router-dom";
 import { callofduty, far6, forza6, mafia3 } from "../assets/img";
-import Games from "./Games";
+import Games from "./Gamess";
 import Genres from "./Genres";
 
 const Hero = () => {
