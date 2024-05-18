@@ -33,7 +33,7 @@ const Navbar = () => {
         >
           <div className="flex justify-start gap-28">
             <div>
-              <img src={logo} alt="Logo" width={"120px"} />
+              <img src={logo} alt="Logo" width={"80px"} />
             </div>
             <div className="text-white font-semibold hidden md:block lg:block uppercase">
               <p>Games</p>

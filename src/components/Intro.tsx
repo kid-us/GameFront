@@ -48,7 +48,7 @@ const Intro = () => {
           padding: "10px",
         }}
       >
-        <div className="container mx-auto mt-20">
+        <div className="container mx-auto mt-24">
           <div className="relative">
             {playVideo && (
               <video
