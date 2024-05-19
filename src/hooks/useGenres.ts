@@ -19,7 +19,7 @@ const useGenres = () => {
 
  useEffect(()=> {
     apiClient.get<FetchGenresResponse>("/genres").then((res) => setGenres(res.data.results))
- })
+ },[])
     
  return (genres);
 
