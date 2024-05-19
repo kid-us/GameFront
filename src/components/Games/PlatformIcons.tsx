@@ -78,7 +78,7 @@ const PlatformIcons: React.FC<Props> = ({ platform }) => {
       {platform.map((p) => {
         const IconComponent = icons[p.slug];
         return IconComponent ? (
-          <span key={p.slug}>
+          <span key={p.slug} className="text-gray-600 text-xl">
             <IconComponent />
           </span>
         ) : null;

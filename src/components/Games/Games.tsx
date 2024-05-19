@@ -27,18 +27,11 @@ const Games = () => {
                   {game.name}
                 </h1>
 
-                <PlatformIcons
-                  platform={game.parent_platforms.map((p) => p.platform)}
-                />
-                {/* {game.parent_platforms.map(({ platform }) => (
-                  <p className="text-cyan-700 space-x-3">
-                    {platform.name}
-                    <span className="bi-microsoft text-lg"></span>
-                    <span className="bi-apple text-2xl"></span>
-                    <span className="bi-xbox  text-xl"></span>
-                    <span className="bi-playstation text-2xl"></span>
-                  </p>
-                ))} */}
+                <div className="flex space-x-2">
+                  <PlatformIcons
+                    platform={game.parent_platforms.map((p) => p.platform)}
+                  />
+                </div>
               </div>
             </div>
           ))}
