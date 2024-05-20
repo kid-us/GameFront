@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Genres from "../Genres/Genres";
+import { useGameCountStore } from "../../store/useGameCountStore";
 
 const Filter = () => {
   const [filter, setFilter] = useState(false);
+  const { count } = useGameCountStore();
   return (
     <>
       {/* Large device Filter*/}
@@ -35,7 +37,12 @@ const Filter = () => {
         {!filter && (
           <div>
             <h1 className="font-bold  bi-dpad-fill text-2xl"> Games</h1>
-            <p className="text-sm font-semibold mt-2">420 Results</p>
+            <p className="text-sm font-semibold mt-2">
+              <span className="font-mono me-2 text-teal-500 text-lg">
+                {count}
+              </span>
+              Results
+            </p>
           </div>
         )}
         <div>

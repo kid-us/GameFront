@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
-import useGames from "../../hooks/useGames";
+// import useGames from "../../hooks/useGames";
 import PlatformIcons from "./PlatformIcons";
+import { useGameStore } from "../../store/useGamesStore";
 
 const Games = () => {
-  const { games, loading } = useGames();
+  // const { games, loading } = useGames();
+  const { game, loading } = useGameStore();
 
   return (
     <>
@@ -29,7 +31,7 @@ const Games = () => {
           ))
         ) : (
           <>
-            {games.map((game) => (
+            {game.map((game) => (
               <Link
                 className="transition ease-in-out delay-150 hover:-translate-y-2 duration-500 hover:shadow-md hover:shadow-teal-500  mb-3"
                 key={game.id}

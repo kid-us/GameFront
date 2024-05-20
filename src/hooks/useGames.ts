@@ -19,28 +19,34 @@ export interface Game {
   parent_platforms: { platform: Platform }[];
 }
 
-interface FetchGamesResponse {
+export interface FetchGamesResponse {
   count: number;
   results: Game[];
 }
 
 const useGames = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [loading, setLoading] = useState(true);
   // States
-  const { updateGame } = useGameStore();
+  const { updateGame, updateLoading } = useGameStore();
   const { updateCount } = useGameCountStore();
 
   useEffect(() => {
     apiClient.get<FetchGamesResponse>("/games").then((res) => {
-      setGames(res.data.results);
-      setLoading(false);
+      updateLoading(false);
       updateGame(res.data.results);
       updateCount(res.data.count);
     });
   }, []);
 
-  return { games, loading };
+  const handleGenreSelect = (id: number) => {
+    updateLoading(true);
+    apiClient.get<FetchGamesResponse>(`/games?genres=${id}`).then((res) => {
+      updateLoading(false);
+      updateGame(res.data.results);
+      updateCount(res.data.count);
+    });
+  };
+
+  return { handleGenreSelect };
 };
 
 export default useGames;
