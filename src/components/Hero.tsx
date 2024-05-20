@@ -18,7 +18,7 @@ const Hero = () => {
         </div>
 
         {/* Games */}
-        <div className="col-span-5 font-semibold px-7 games-bg">
+        <div className="col-span-5 font-semibold lg:px-7 mx-2 games-bg">
           <Filter />
           <Games />
         </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Genres from "../Genres/Genres";
 
 const Filter = () => {
   const [filter, setFilter] = useState(false);
@@ -28,7 +29,7 @@ const Filter = () => {
       {/* Small Device  Genres*/}
       <div
         className={`flex relative justify-between mb-8 lg:hidden mt-5
-          ${filter && "sticky top-28"}
+          ${filter && "sticky top-24 z-50"}
           `}
       >
         {!filter && (
@@ -48,21 +49,22 @@ const Filter = () => {
         {filter && (
           <>
             <div className="overlay-bg"></div>
-            <div className="animate__animated animate__fadeIn absolute h-[100vh] bg-white z-10 w-[80%] border-2 -right-7 top-0 rounded p-4">
+            <div className="animate__animated animate__fadeIn absolute h-[85vh] games-bg z-10 w-[70%] -right-2 top-0 rounded pt-5">
               <p
                 onClick={() => setFilter(false)}
-                className="absolute -top-3 rounded-full bg-teal-950 h-6 w-6 -left-4 text-center text-white mt-1 bi-arrow-right"
+                className="absolute -top-3 rounded-full bg-teal-50 h-6 w-6 -left-4 text-center text-black font-bold mt-1 bi-arrow-right"
               ></p>
-              <p className="">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus,
-                ullam sapiente! Tempora, quae aspernatur libero porro omnis eius
-                quibusdam atque veniam nostrum ea sapiente molestias saepe iusto
-                accusantium repellat quas. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Ratione totam delectus officiis
-                inventore corrupti soluta vero deserunt natus accusantium
-                debitis voluptates provident aspernatur optio, architecto
-                reiciendis fugit, excepturi hic est.
-              </p>
+
+              <div className="px-6">
+                <p className="shadow-xl shadow-zinc-800 py-2 px-5 rounded-md cursor-pointer mb-7 text-sm">
+                  <span className="text-xl"></span>
+                  Filter By :<span className="text-teal-500 ms-2">Years </span>
+                  <span className="bi-caret-down-fill text-xs text-teal-500"></span>
+                </p>
+                <div className="overflow-scroll h-[70vh]">
+                  <Genres />
+                </div>
+              </div>
             </div>
           </>
         )}

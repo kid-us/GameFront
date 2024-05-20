@@ -67,23 +67,13 @@ const Intro = () => {
                   className="rounded-lg w-full xl:aspect-auto md:aspect-auto aspect-square object-cover lg:h-[650px]"
                   alt="Game Covers"
                 />
-                {/* {hover && (
-                  <div className="absolute transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none top-0 w-full glass-effect rounded-lg h-full text-center">
-                    <p className="lg:mt-72 md:mt-44 mt-52 text-white text-7xl">
-                      <span
-                        className="cursor-pointer bi-play-circle-fill"
-                        onClick={() => setPlayVideo(true)}
-                      ></span>
-                    </p>
-                  </div>
-                )} */}
               </div>
             )}
             <div className="absolute w-full bottom-0 shadow-xl shadow-zinc-950 backdrop-blur-sm backdrop-brightness-50">
               <div className="lg:p-10 md:p-2 p-4 py-2 bg-highlight">
                 <div className="grid grid-cols-3">
                   <div className="col-span-2">
-                    <h1 className="lg:text-4xl md:text-3xl text-2xl font-bold text-white">
+                    <h1 className="lg:text-4xl md:text-3xl text-lg font-bold text-white">
                       {intro[0].name}
                     </h1>
                     <p
@@ -92,8 +82,10 @@ const Intro = () => {
                     >
                       <span
                         className={`${
-                          playVideo ? "bi-x-lg" : "bi-play-circle-fill"
-                        } lg:text-2xl me-2`}
+                          playVideo
+                            ? "bi-x-lg"
+                            : "bi-play-circle-fill md:text-xl text-md"
+                        } lg:text-2xl md:text-xl text-md me-2`}
                       ></span>
                       {playVideo ? "Close Trailer" : "Watch Trailer"}
                     </p>
@@ -104,7 +96,7 @@ const Intro = () => {
                       <span className="bi-playstation  mx-3 text-2xl"></span>
                     </p>
                   </div>
-                  <div className="lg:ms-48 lg:mt-0 md:mt-0 mt-10 md:ms-0 ms-10">
+                  <div className="lg:ms-48 lg:mt-0 md:mt-0 mt-10 md:ms-0">
                     <p
                       onClick={() => setPlayVideo(!playVideo)}
                       className="lg:block md:block hidden text-amber-700 font-semibold font-poppins text-xl mt-2  mb-3 uppercase cursor-pointer"
@@ -116,14 +108,16 @@ const Intro = () => {
                       ></span>
                       {playVideo ? "Close Trailer" : "Watch Trailer"}
                     </p>
-                    <button
-                      onClick={() => handlePreviousVideo(intro[0].id)}
-                      className="bg-cyan-200 rounded font-semibold py-1 px-2 bi-arrow-left-circle-fill"
-                    ></button>
-                    <button
-                      onClick={() => handleNextVideo(intro[0].id)}
-                      className="bg-cyan-200 rounded font-semibold py-1 px-2 ms-4 bi-arrow-right-circle-fill"
-                    ></button>
+                    <div className="sm:text-end">
+                      <button
+                        onClick={() => handlePreviousVideo(intro[0].id)}
+                        className="bg-cyan-200 rounded font-semibold py-1 px-2 bi-arrow-left-circle-fill"
+                      ></button>
+                      <button
+                        onClick={() => handleNextVideo(intro[0].id)}
+                        className="bg-cyan-200 rounded font-semibold py-1 px-2 ms-4 bi-arrow-right-circle-fill"
+                      ></button>
+                    </div>
                   </div>
                 </div>
               </div>

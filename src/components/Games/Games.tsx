@@ -14,16 +14,15 @@ const Games = () => {
             <div key={index} className="animate-blink shadow-xl mb-4">
               <div className="relative">
                 <div className="lg:h-[290px] md:h-[300px] h-[200px] w-full rounded-t bg-zinc-700" />
-                <div className="absolute top-0 w-full glass-effect-no-blur h-full"></div>
                 <div className="absolute bg-zinc-600 rounded-b-full top-0 right-2 h-9 w-5"></div>
               </div>
-              <div className="pt-2 pb-2 bg-zinc-700 rounded-b">
+              <div className="pt-2 pb-2 rounded-b">
                 <div className="flex justify-between">
-                  <h6 className="text-lg mb-2 text-nowrap w-full rounded bg-zinc-700 h-8"></h6>
+                  <h6 className="text-lg mb-2 text-nowrap w-full rounded bg-zinc-700 h-11"></h6>
                 </div>
                 <div className="grid grid-cols-4 gap-2">
-                  <div className="col-span-3 bg-zinc-700 w-full h-7 rounded"></div>
-                  <div className="bg-zinc-700 w-full h-7 rounded"></div>
+                  <div className="col-span-3 bg-zinc-700 w-full h-9 rounded"></div>
+                  <div className="bg-zinc-700 w-full h-9 rounded"></div>
                 </div>
               </div>
             </div>
@@ -56,7 +55,7 @@ const Games = () => {
                       </h6>
                     </div>
                     <div className="grid grid-cols-4">
-                      <div className="col-span-3 text-xs">
+                      <div className="col-span-3 text-xs w-2/3 overflow-hidden">
                         <p className="text-xs font-poppins text-gray-600">
                           Platforms
                         </p>
@@ -68,9 +67,12 @@ const Games = () => {
                           />
                         </div>
                       </div>
-                      <div className="text-xs">
-                        <p className="font-poppins text-gray-600">Play Time</p>
-                        <p className="text-center font-mono mt-2">
+
+                      <div className="lg:text-xs md:text-xs">
+                        <p className="font-poppins text-gray-600 text-nowrap overflow-hidden text-[8.5px]">
+                          Play Time
+                        </p>
+                        <p className="text-center font-mono mt-2 text-xs">
                           {game.playtime} hr
                         </p>
                       </div>
