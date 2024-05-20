@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import apiClient from "../services/apiClient";
 import { useGameStore } from "../store/useGamesStore";
 import { useGameCountStore } from "../store/useGameCountStore";
+import { useSelectedGenreStore } from "../store/useSelectedGenre";
 
 export interface Platform {
   id: number;
@@ -28,6 +29,7 @@ const useGames = () => {
   // States
   const { updateGame, updateLoading } = useGameStore();
   const { updateCount } = useGameCountStore();
+  const { setSelectedGenre } = useSelectedGenreStore();
 
   useEffect(() => {
     apiClient.get<FetchGamesResponse>("/games").then((res) => {
@@ -39,6 +41,7 @@ const useGames = () => {
 
   const handleGenreSelect = (id: number) => {
     updateLoading(true);
+    setSelectedGenre(id);
     apiClient.get<FetchGamesResponse>(`/games?genres=${id}`).then((res) => {
       updateLoading(false);
       updateGame(res.data.results);

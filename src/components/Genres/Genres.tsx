@@ -1,9 +1,10 @@
 import useGenres from "../../hooks/useGenres";
 import useGames from "../../hooks/useGames";
-
+import { useSelectedGenreStore } from "../../store/useSelectedGenre";
 const Genres = () => {
   const { genres, loading } = useGenres();
   const { handleGenreSelect } = useGames();
+  const { id } = useSelectedGenreStore();
 
   return (
     <>
@@ -22,7 +23,10 @@ const Genres = () => {
             <div
               onClick={() => handleGenreSelect(genre.id)}
               key={genre.id}
-              className="relative grid grid-cols-3 mb-5 cursor-pointer"
+              className={`relative grid grid-cols-3 mb-5 cursor-pointer ${
+                id === genre.id &&
+                "text-teal-600 rounded shadow-sm shadow-teal-700"
+              }`}
             >
               <img
                 src={genre.image_background}
