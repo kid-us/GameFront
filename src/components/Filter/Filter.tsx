@@ -42,7 +42,7 @@ const Filter = () => {
           {!filter && (
             <p
               onClick={() => setFilter(true)}
-              className="bi-filter-right text-3xl mt-2 border rounded px-2 bg-teal-950 text-white"
+              className="bi-filter-right text-3xl mt-2 rounded px-2 bg-teal-800 text-white"
             ></p>
           )}
         </div>

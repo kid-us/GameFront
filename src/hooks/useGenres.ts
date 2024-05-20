@@ -16,12 +16,15 @@ interface FetchGenresResponse {
 
 const useGenres = () => {
  const [genres, setGenres] = useState<Genres[]>();
+ const [loading, setLoading] = useState(true);
 
  useEffect(()=> {
-    apiClient.get<FetchGenresResponse>("/genres").then((res) => setGenres(res.data.results))
+    apiClient.get<FetchGenresResponse>("/genres").then((res) => {
+        setGenres(res.data.results); 
+        setLoading(false)})
  },[])
     
- return (genres);
+ return ({genres, loading});
 
 }
 
