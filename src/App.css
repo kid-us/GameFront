@@ -60,6 +60,11 @@ textarea {
   border: 1px solid rgba(9, 0, 0, 0.3);
 }
 
+.glass-effect-no-blur {
+  background: rgba(9, 0, 0, 0);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
 .nav-bg {
   background: rgba(16, 16, 16, 0.87);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
