@@ -20,13 +20,16 @@ const Genres = () => {
             <Link
               to={`/${genre.id}`}
               key={genre.id}
-              className="grid grid-cols-3 mb-5"
+              className="relative grid grid-cols-3 mb-5"
             >
               <img
                 src={genre.image_background}
                 className="w-10 object-cover h-10 rounded shadow-lg"
               />
               <p className="mt-2">{genre.name}</p>
+              <p className="absolute -top-3 right-1 font-mono p-1 text-teal-600 text-xs">
+                {genre.games_count}
+              </p>
             </Link>
           ))}
         </>
