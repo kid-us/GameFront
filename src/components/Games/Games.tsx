@@ -11,15 +11,15 @@ const Games = () => {
       <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:gap-5 md:gap-4 gap-2">
         {games.map((game) => (
           <Link key={game.id} to={`/${game.id}`}>
-            <div className="shadow-md mb-2">
-              <div>
+            <div className="shadow-xl mb-2">
+              <div className="">
                 <img
                   src={game.background_image}
                   className="aspect-square object-cover lg:h-[290px] md:h-[300px] h-[200px] w-full rounded-t"
                   alt="Games Image"
                 />
               </div>
-              <div className="pt-2 px-2 pb-2 bg-white text-black rounded-b">
+              <div className="pt-2 px-2 pb-2 bg-zinc-200 hover:bg-white text-black rounded-b">
                 <div className="flex justify-between">
                   <h6 className="text-lg mb-2 text-nowrap w-52 overflow-hidden">
                     {game.name}

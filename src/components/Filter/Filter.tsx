@@ -5,18 +5,19 @@ const Filter = () => {
   return (
     <>
       {/* Large device Filter*/}
-      <div className="lg:block md:block hidden rounded px-4 py-3 text-white my-4">
+      <div className="lg:block md:block hidden rounded px-4 py-3 text-white mt-5 mb-9 shadow-sm shadow-zinc-800">
         <div className="flex justify-between">
           <div>
-            <p>
-              Years
-              <span className="bi-caret-down-fill text-xs"></span>{" "}
+            <p className="shadow-xl shadow-zinc-800 py-2 px-5 rounded-md cursor-pointer">
+              <span className="text-xl bi-filter-left"></span>
+              By :<span className="text-teal-500 ms-2 text-lg">Years </span>
+              <span className="bi-caret-down-fill text-xs text-teal-500"></span>
             </p>
           </div>
           <div className="w-72 relative">
             <input
               type="text"
-              className=" w-full ps-10 py-2 rounded-xl bg-zinc-800 text-white focus:outline-none-0 outline-none font-poppins shadow-sm shadow-gray-500"
+              className=" w-full ps-10 py-2 rounded-xl bg-zinc-800 text-white focus:outline-none-0 outline-none font-poppins shadow-sm shadow-gray-500 placeholder:text-sm"
               placeholder="Search Games"
             />
             <span className="absolute bi-search left-3 top-2 text-zinc-400"></span>
