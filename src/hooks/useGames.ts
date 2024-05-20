@@ -24,14 +24,18 @@ export interface Game {
 
 const useGames = () => {
     const [games, setGames] = useState<Game[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
       apiClient
         .get<FetchGamesResponse>("/games")
-        .then((res) => {setGames(res.data.results);} );
+        .then((res) => {
+          setGames(res.data.results);
+          setLoading(false);
+        } );
     }, []);
 
-    return (games)
+    return ({games, loading})
 }
 
 export default useGames;
