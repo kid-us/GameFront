@@ -10,8 +10,8 @@ const Games = () => {
       {/* Games */}
       <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:gap-5 md:gap-4 gap-2">
         {games.map((game) => (
-          <Link to={`/${game.id}`}>
-            <div key={game.id} className="shadow-md mb-2">
+          <Link key={game.id} to={`/${game.id}`}>
+            <div className="shadow-md mb-2">
               <div>
                 <img
                   src={game.background_image}
@@ -24,11 +24,6 @@ const Games = () => {
                   <h6 className="text-lg mb-2 text-nowrap w-52 overflow-hidden">
                     {game.name}
                   </h6>
-                  <p className="relative text-[22px] text-center bi-star-fill text-yellow-400">
-                    <span className="absolute text-black text-xs top-[9.4px] left-[7.5px] font-poppins">
-                      {game.rating.toFixed(0)}
-                    </span>
-                  </p>
                 </div>
                 <div className="grid grid-cols-4">
                   <div className="col-span-3 text-xs">
