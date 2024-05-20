@@ -1,19 +1,14 @@
 // import { Link } from "react-router-dom";
+import Filter from "./Filter/Filter";
 import Games from "./Games/Games";
 import Genres from "./Genres/Genres";
 
 const Hero = () => {
   return (
     <>
-      <div
-        className="grid lg:grid-cols-6 md:grid-cols-6"
-        style={{
-          backgroundSize: "cover",
-          backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.99),rgba(0, 0, 0, 0.99) )`,
-        }}
-      >
+      <div className="grid lg:grid-cols-6 md:grid-cols-6 text-white">
         {/* Genres */}
-        <div className="container-fluid shadow-xl bg-white text-black font-semibold lg:block md:block hidden border-gray-400-700 me-5 py-10">
+        <div className="container-fluid shadow-xl font-semibold lg:block md:block hidden border-gray-400-700 me-5 py-10">
           <h1 className="font-bold  bi-dpad-fill text-2xl"> Games</h1>
           <p className="text-sm font-semibold mt-2">420 Results</p>
           <hr className="my-5" />
@@ -23,9 +18,8 @@ const Hero = () => {
         </div>
 
         {/* Games */}
-        <div className="col-span-5 font-semibold mx-7 mt-5">
-          <p className="my-4">All Games</p>
-
+        <div className="col-span-5 font-semibold mx-7">
+          <Filter />
           <Games />
         </div>
       </div>

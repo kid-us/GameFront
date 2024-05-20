@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { logo } from "../assets/img";
+import { logo } from "../../assets/img";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);

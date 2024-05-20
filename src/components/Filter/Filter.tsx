@@ -3,13 +3,25 @@ import { useState } from "react";
 const Filter = () => {
   const [filter, setFilter] = useState(false);
   return (
-    <div>
+    <>
       {/* Large device Filter*/}
-      <div className="lg:block md:block hidden text- my-6 shadow-xl rounded px-4 py-3">
-        <p className="text-sm">
-          <span className="bi-filter-left text-xl"></span> Filter by:
-          <span className="text-teal-950 text-xl "> Years</span>
-        </p>
+      <div className="lg:block md:block hidden rounded px-4 py-3 text-white my-4">
+        <div className="flex justify-between">
+          <div>
+            <p>
+              Years
+              <span className="bi-caret-down-fill text-xs"></span>{" "}
+            </p>
+          </div>
+          <div className="w-72 relative">
+            <input
+              type="text"
+              className=" w-full ps-10 py-2 rounded-xl bg-zinc-800 text-white focus:outline-none-0 outline-none font-poppins shadow-sm shadow-gray-500"
+              placeholder="Search Games"
+            />
+            <span className="absolute bi-search left-3 top-2 text-zinc-400"></span>
+          </div>
+        </div>
       </div>
 
       {/* Small Device  Genres*/}
@@ -54,7 +66,7 @@ const Filter = () => {
           </>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

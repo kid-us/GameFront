@@ -12,7 +12,6 @@ const Footer = () => {
           backgroundRepeat: "no-repeat",
           backgroundImage: `linear-gradient(to bottom, rgba(1, 1, 1, 0.1), rgba(0, 0, 0, 1)), url(${footer})`,
           backgroundPosition: "center top",
-          marginTop: "80px",
         }}
       >
         <div className="footer-wrapper container mx-auto pt-5"></div>
