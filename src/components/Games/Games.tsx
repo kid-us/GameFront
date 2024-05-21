@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-// import useGames from "../../hooks/useGames";
 import PlatformIcons from "./PlatformIcons";
 import { useGameStore } from "../../store/useGamesStore";
+import { photo } from "../../assets/img";
 
 const Games = () => {
-  // const { games, loading } = useGames();
   const { game, loading } = useGameStore();
 
   return (
@@ -40,7 +39,9 @@ const Games = () => {
                 <div className="shadow-xl mb-">
                   <div className="relative">
                     <img
-                      src={game.background_image}
+                      src={
+                        game.background_image ? game.background_image : photo
+                      }
                       className="aspect-square object-cover lg:h-[290px] md:h-[300px] h-[200px] w-full rounded-t"
                       alt="Games Image"
                     />

@@ -72,7 +72,7 @@ const useGames = () => {
     apiClient
       .get<FetchGamesResponse>(`games?ordering=${value}`)
       .then((res) => {
-        console.log(res.data.results);
+        // console.log(res.data.results);
 
         updateLoading(false);
         updateGame(res.data.results);
