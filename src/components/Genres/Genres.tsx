@@ -32,7 +32,7 @@ const Genres = () => {
                 src={genre.image_background}
                 className="w-10 object-cover h-10 rounded shadow-lg"
               />
-              <p className="mt-2">{genre.name}</p>
+              <p className="mt-2 ms-5">{genre.name}</p>
               {/* <p className=" absolute -top-3 right-2 font-mono p-1 text-teal-600 text-xs">
                 {genre.games_count}
               </p> */}
