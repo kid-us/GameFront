@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { platforms } from "../../services/platforms";
+import useGames from "../../hooks/useGames";
 
 const PlatformSelector: React.FC = () => {
   const [showPlatforms, setShowPlatforms] = useState(false);
+
+  const { handlePlatformSelector } = useGames();
   return (
     <div className="relative">
       <button
@@ -21,6 +24,10 @@ const PlatformSelector: React.FC = () => {
         <div className="absolute bg2 rounded-md shadow-md mt-2 p-2 z-10 w-64 shadow-teal-400">
           {platforms.map((platform) => (
             <button
+              onClick={() => {
+                handlePlatformSelector(platform.id);
+                setShowPlatforms(false);
+              }}
               key={platform.id}
               className="flex items-center p-2 hover:bg-zinc-800 rounded-md mb-1 w-full"
             >

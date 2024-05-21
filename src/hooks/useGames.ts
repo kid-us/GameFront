@@ -49,7 +49,18 @@ const useGames = () => {
     });
   };
 
-  return { handleGenreSelect };
+  const handlePlatformSelector = (id: number) => {
+    console.log(id);
+
+    updateLoading(true);
+    apiClient.get<FetchGamesResponse>(`/games?platform=${id}`).then((res) => {
+      updateLoading(false);
+      updateGame(res.data.results);
+      updateCount(res.data.count);
+    });
+  };
+
+  return { handleGenreSelect, handlePlatformSelector };
 };
 
 export default useGames;
