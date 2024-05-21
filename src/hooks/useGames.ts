@@ -32,35 +32,56 @@ const useGames = () => {
   const { setSelectedGenre } = useSelectedGenreStore();
 
   useEffect(() => {
-    apiClient.get<FetchGamesResponse>("/games").then((res) => {
-      updateLoading(false);
-      updateGame(res.data.results);
-      updateCount(res.data.count);
-    });
+    apiClient
+      .get<FetchGamesResponse>("/games")
+      .then((res) => {
+        updateLoading(false);
+        updateGame(res.data.results);
+        updateCount(res.data.count);
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   const handleGenreSelect = (id: number) => {
     updateLoading(true);
     setSelectedGenre(id);
-    apiClient.get<FetchGamesResponse>(`/games?genres=${id}`).then((res) => {
-      updateLoading(false);
-      updateGame(res.data.results);
-      updateCount(res.data.count);
-    });
+    apiClient
+      .get<FetchGamesResponse>(`/games?genres=${id}`)
+      .then((res) => {
+        updateLoading(false);
+        updateGame(res.data.results);
+        updateCount(res.data.count);
+      })
+      .catch((error) => console.log(error));
   };
 
   const handlePlatformSelector = (id: number) => {
-    console.log(id);
-
     updateLoading(true);
-    apiClient.get<FetchGamesResponse>(`/games?platform=${id}`).then((res) => {
-      updateLoading(false);
-      updateGame(res.data.results);
-      updateCount(res.data.count);
-    });
+    apiClient
+      .get<FetchGamesResponse>(`/games?platform=${id}`)
+      .then((res) => {
+        updateLoading(false);
+        updateGame(res.data.results);
+        updateCount(res.data.count);
+      })
+      .catch((error) => console.log(error));
   };
 
-  return { handleGenreSelect, handlePlatformSelector };
+  const handleOrder = (value: string) => {
+    updateLoading(true);
+    apiClient
+      .get<FetchGamesResponse>(`games?ordering=${value}`)
+      .then((res) => {
+        console.log(res.data.results);
+
+        updateLoading(false);
+        updateGame(res.data.results);
+        updateCount(res.data.count);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  return { handleGenreSelect, handlePlatformSelector, handleOrder };
 };
 
 export default useGames;

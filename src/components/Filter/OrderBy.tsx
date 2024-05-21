@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { sortOrders } from "../../services/sort";
+import useGames from "../../hooks/useGames";
 
 const OrderBy = () => {
   const [showSortBy, setShowSorBy] = useState(false);
-  const [activeSort, setActiveSort] = useState("Relevance");
+  const [activeSort, setActiveSort] = useState("");
+  const { handleOrder } = useGames();
   return (
     <div className="relative ms-5">
       <button
@@ -11,8 +13,10 @@ const OrderBy = () => {
         className="shadow-xl bg2 w-64 py-2 px-5 rounded-md cursor-pointer text-start"
       >
         <span className="text-xl bi-sort-alpha-up"></span>
-        <span className="ms-2 text-md"> Order : </span>
-        <span className="text-teal-500">{activeSort}</span>
+        <span className="ms-2 text-md"> Order By</span>
+        <span className="text-teal-500">
+          {activeSort && " : " + activeSort}
+        </span>
         <span
           className={`${
             showSortBy ? "bi-caret-up-fill" : "bi-caret-down-fill"
@@ -26,7 +30,7 @@ const OrderBy = () => {
               onClick={() => {
                 setActiveSort(sort.label);
                 setShowSorBy(false);
-                // handlePlatformSelector(platform.id);
+                handleOrder(sort.value);
               }}
               key={sort.label}
               className="flex items-center p-2 hover:bg-zinc-800 rounded-md mb-1 w-full"
