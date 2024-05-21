@@ -26,62 +26,99 @@ export interface FetchGamesResponse {
 }
 
 const useGames = () => {
-  // States
   const { updateGame, updateLoading } = useGameStore();
   const { updateCount } = useGameCountStore();
   const { setSelectedGenre } = useSelectedGenreStore();
 
   useEffect(() => {
-    apiClient
-      .get<FetchGamesResponse>("/games")
-      .then((res) => {
+    const fetchData = async () => {
+      updateLoading(true);
+      try {
+        const response = await apiClient.get<FetchGamesResponse>("/games");
+        updateGame(response.data.results);
+        updateCount(response.data.count);
+      } catch (error) {
+        updateLoading(true);
+        console.error(error);
+      } finally {
         updateLoading(false);
-        updateGame(res.data.results);
-        updateCount(res.data.count);
-      })
-      .catch((error) => console.log(error));
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const handleGenreSelect = (id: number) => {
+  const handleGenreSelect = async (id: number) => {
     updateLoading(true);
     setSelectedGenre(id);
-    apiClient
-      .get<FetchGamesResponse>(`/games?genres=${id}`)
-      .then((res) => {
-        updateLoading(false);
-        updateGame(res.data.results);
-        updateCount(res.data.count);
-      })
-      .catch((error) => console.log(error));
+    try {
+      const response = await apiClient.get<FetchGamesResponse>(
+        `/games?genres=${id}`
+      );
+      updateGame(response.data.results);
+      updateCount(response.data.count);
+    } catch (error) {
+      updateLoading(true);
+      console.error(error);
+    } finally {
+      updateLoading(false);
+    }
   };
 
-  const handlePlatformSelector = (id: number) => {
+  const handlePlatformSelect = async (id: number) => {
     updateLoading(true);
-    apiClient
-      .get<FetchGamesResponse>(`/games?platform=${id}`)
-      .then((res) => {
-        updateLoading(false);
-        updateGame(res.data.results);
-        updateCount(res.data.count);
-      })
-      .catch((error) => console.log(error));
+    try {
+      const response = await apiClient.get<FetchGamesResponse>(
+        `/games?platforms=${id}`
+      );
+      updateGame(response.data.results);
+      updateCount(response.data.count);
+    } catch (error) {
+      updateLoading(true);
+      console.error(error);
+    } finally {
+      updateLoading(false);
+    }
   };
 
-  const handleOrder = (value: string) => {
+  const handleOrder = async (value: string) => {
     updateLoading(true);
-    apiClient
-      .get<FetchGamesResponse>(`games?ordering=${value}`)
-      .then((res) => {
-        // console.log(res.data.results);
-
-        updateLoading(false);
-        updateGame(res.data.results);
-        updateCount(res.data.count);
-      })
-      .catch((error) => console.log(error));
+    try {
+      const response = await apiClient.get<FetchGamesResponse>(
+        `/games?ordering=${value}`
+      );
+      updateGame(response.data.results);
+      updateCount(response.data.count);
+    } catch (error) {
+      updateLoading(true);
+      console.error(error);
+    } finally {
+      updateLoading(false);
+    }
   };
 
-  return { handleGenreSelect, handlePlatformSelector, handleOrder };
+  const handleSearch = async (keyword: string) => {
+    updateLoading(true);
+    try {
+      const response = await apiClient.get<FetchGamesResponse>(
+        `/games?search=${keyword}`
+      );
+      updateGame(response.data.results);
+      updateCount(response.data.count);
+    } catch (error) {
+      updateLoading(true);
+      console.error(error);
+    } finally {
+      updateLoading(false);
+    }
+  };
+
+  return {
+    handleGenreSelect,
+    handlePlatformSelect,
+    handleOrder,
+    handleSearch,
+  };
 };
 
 export default useGames;
