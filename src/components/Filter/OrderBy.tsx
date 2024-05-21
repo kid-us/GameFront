@@ -20,7 +20,7 @@ const OrderBy = () => {
         <span
           className={`${
             showSortBy ? "bi-caret-up-fill" : "bi-caret-down-fill"
-          } text-xs text-teal-500 ms-5`}
+          } text-xs text-teal-500 ${activeSort ? "ms-5" : "ms-24"}`}
         ></span>
       </button>
       {showSortBy && (
