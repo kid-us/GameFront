@@ -2,6 +2,7 @@ import { useState } from "react";
 import Genres from "../Genres/Genres";
 import { useGameCountStore } from "../../store/useGameCountStore";
 import PlatformSelector from "./PlatformSelector";
+import OrderBy from "./OrderBy";
 
 const Filter = () => {
   const [filter, setFilter] = useState(false);
@@ -11,7 +12,11 @@ const Filter = () => {
       {/* Large device Filter*/}
       <div className="lg:block md:block hidden rounded pr-4 py-3 text-white mt-5 mb-9">
         <div className="flex justify-between">
-          <PlatformSelector />
+          <div className="grid grid-cols-2">
+            <PlatformSelector />
+            <OrderBy />
+          </div>
+
           <div className="w-72 relative">
             <input
               type="text"
