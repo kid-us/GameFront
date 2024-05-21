@@ -33,7 +33,7 @@ const Games = () => {
           <>
             {game.map((game) => (
               <Link
-                className="transition ease-in-out delay-150 hover:-translate-y-2 duration-500 hover:shadow-md hover:shadow-teal-500  mb-3"
+                className="shadow-sm shadow-teal-800 transition ease-in-out delay-150 hover:-translate-y-2 duration-500 hover:shadow-md hover:shadow-teal-500  mb-3"
                 key={game.id}
                 to={`/${game.id}`}
               >
@@ -50,7 +50,7 @@ const Games = () => {
                       <p>{game.rating.toFixed(0)}</p>
                     </div>
                   </div>
-                  <div className="pt-2 px-2 pb-2 bg-white text-black rounded-b">
+                  <div className="pt-2 px-2 pb-2 bg2 text-white rounded-b">
                     <div className="flex justify-between">
                       <h6 className="text-lg mb-2 text-nowrap w-52 overflow-hidden">
                         {game.name}
