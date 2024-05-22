@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import { useEffect, useState } from "react";
 import apiClient from "../../services/apiClient";
+import PlatformIcons from "./PlatformIcons";
 
 // Trailer
 interface Video {
@@ -113,30 +114,16 @@ const GameDetail = () => {
             className=""
             style={{
               backgroundSize: "cover",
-              backgroundImage: `linear-gradient(to bottom, rgba(1, 1, 1, 0.70), rgba(0, 0, 0, 0.99)), url("${gameDetail.background_image}")`,
+              backgroundImage: `linear-gradient(to bottom, rgba(1, 1, 1, 0.80), rgba(0, 0, 0, 0.99)), url("${gameDetail.background_image}")`,
               backgroundPosition: "center top",
               paddingTop: "90px",
             }}
           >
             <div className="container mx-auto text-white">
-              <h1 className="text-white text-2xl">{gameDetail.name}</h1>
-              <div className="flex mb-7 mt-4">
-                <p className="space-x-2">
-                  {handleRate(gameDetail.rating.toFixed(0))}
-                  <span className="font-mono">
-                    {gameDetail.rating.toFixed(1)}
-                  </span>
-                </p>
-                <p className="bi-play-fill font-semibold ms-24 text-sm">
-                  Play Time{" "}
-                  <span className="text-teal-200 font-bold font-mono">
-                    {gameDetail.playtime}
-                  </span>{" "}
-                  hr
-                </p>
-              </div>
+              <h1 className="text-white text-2xl mb-5">{gameDetail.name}</h1>
+
               {/* Info */}
-              <div className="flex gap-10 justify-between">
+              <div className="flex gap-5 justify-between">
                 <div className="w-[80%]">
                   {view === "image" && (
                     <img
@@ -155,36 +142,65 @@ const GameDetail = () => {
                     ></video>
                   )}
                 </div>
-                {trailer.length > 0 && (
-                  <div className="w-[20%]">
-                    <p className="mb-5 font-semibold">Preview</p>
-                    <img
-                      src={gameDetail.background_image}
-                      alt="Preview"
-                      className="cursor-pointer hover:grayscale-[0] grayscale-[1] rounded shadow-sm shadow-teal-50"
-                      onClick={() => setView("image")}
+                <div className="w-[20%] bg-zinc-950 rounded-md px-5 py-5 text-sm mb-14">
+                  <p className="mb-5 font-semibold">Preview</p>
+                  <p className="space-x-2">
+                    {handleRate(gameDetail.rating.toFixed(0))}
+                    <span className="font-mono">
+                      {gameDetail.rating.toFixed(1)}
+                    </span>
+                  </p>
+                  <p className="bi-stopwatch font-semibold my-4">
+                    <span className="text-teal-200 font-bold font-mono">
+                      {" "}
+                      {gameDetail.playtime}
+                    </span>{" "}
+                    hr
+                  </p>
+                  <p className="mb-1 font-semibold mt-5">Release</p>
+                  <p className="font-mono font-semibold text-gray-400">
+                    {gameDetail.released}
+                  </p>
+                  <p className="mb-1 font-semibold mt-5">Publisher</p>
+                  <p className="text-gray-400 text-sm font-semibold">
+                    {gameDetail.publishers[0].name}
+                  </p>
+                  <img
+                    src={gameDetail.background_image_additional}
+                    alt="Preview"
+                    className="rounded mt-8"
+                  />
+                  <div className="flex space-x-4 mt-10">
+                    <PlatformIcons
+                      platform={gameDetail.parent_platforms.map(
+                        (p) => p.platform
+                      )}
                     />
-                    <div
-                      className="relative cursor-pointer"
-                      onClick={() => setView("video")}
-                    >
-                      <img
-                        src={trailer[0].preview}
-                        alt="Preview"
-                        className="hover:grayscale-[0] grayscale-[1] mt-5 rounded shadow-sm shadow-teal-50"
-                      />
-                      <span className="absolute w-full top-0 glass-effect bi-play-fill text-8xl text-center mt-5"></span>
-                    </div>
-                    <p className="mb-1 font-semibold mt-5">Release</p>
-                    <p className="font-mono text-gray-400">
-                      {gameDetail.released}
-                    </p>
-                    <p className="mb-1 font-semibold mt-5">Publisher</p>
-                    <p className="text-gray-400 text-sm font-semibold">
-                      {gameDetail.publishers[0].name}
-                    </p>
                   </div>
-                )}
+                </div>
+              </div>
+              <div className="flex justify-center gap-3">
+                <div className="bg-white w-[10%]">
+                  <img
+                    src={gameDetail.background_image}
+                    alt="Preview"
+                    className="cursor-pointer hover:grayscale-[0] grayscale-[1] rounded shadow-sm shadow-teal-50"
+                    onClick={() => setView("image")}
+                  />
+                </div>
+                <div className="w-[10%]">
+                  <div
+                    className="relative cursor-pointer"
+                    onClick={() => setView("video")}
+                  >
+                    <img
+                      src={trailer[0].preview}
+                      alt="Preview"
+                      className="hover:grayscale-[0] grayscale-[1] rounded shadow-sm shadow-teal-50"
+                    />
+                    <span className="absolute w-full top-0 bi-play-fill text-5xl text-center mt-3"></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -231,7 +247,6 @@ const GameDetail = () => {
                   ))}
               </div>
             </div>
-            {/* <p>{`${}`}</p> */}
           </div>
         </>
       )}
