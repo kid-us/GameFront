@@ -5,6 +5,7 @@ import apiClient from "../../services/apiClient";
 import PlatformIcons from "./PlatformIcons";
 import Description from "../GameDetail/Description";
 import SystemRequirements from "../GameDetail/SystemRequirements";
+import { Screenshot } from "../GameDetail/Screenshot";
 
 // Trailer
 interface Video {
@@ -58,13 +59,13 @@ interface GameDetail {
 }
 
 // Screenshot
-interface Screenshot {
+export interface Screenshots {
   id: number;
   image: string;
 }
 
 interface ScreenshotResponse {
-  results: Screenshot[];
+  results: Screenshots[];
 }
 
 const GameDetail = () => {
@@ -72,7 +73,7 @@ const GameDetail = () => {
 
   const [gameDetail, setGameDetail] = useState<GameDetail>();
   const [trailer, setTrailer] = useState<TrailerData[]>([]);
-  const [screenshot, setScreenshot] = useState<Screenshot[]>([]);
+  const [screenshot, setScreenshot] = useState<Screenshots[]>([]);
 
   const [view, setView] = useState("image");
 
@@ -214,19 +215,8 @@ const GameDetail = () => {
               name={gameDetail.name}
               description={gameDetail.description}
             />
-            <h1 className="mt-10 text-lg">Screenshots</h1>
-            <div className="grid grid-cols-6 gap-3 my-5">
-              {screenshot &&
-                screenshot.map((image) => (
-                  <div key={image.id}>
-                    <img
-                      src={image.image}
-                      alt="Screenshot"
-                      className="aspect-square object-cover rounded"
-                    />
-                  </div>
-                ))}
-            </div>
+
+            {screenshot && <Screenshot screenshots={screenshot} />}
 
             <SystemRequirements
               minimum={gameDetail.platforms[0].requirements.minimum}

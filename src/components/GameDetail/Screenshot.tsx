@@ -1,7 +1,23 @@
-import React from 'react'
+import { Screenshots } from "../Games/GameDetail";
 
-export const Screenshot = () => {
-  return (
-    <div>Screenshot</div>
-  )
+interface Props {
+  screenshots: Screenshots[];
 }
+export const Screenshot = ({ screenshots }: Props) => {
+  return (
+    <>
+      <h1 className="mt-10 text-lg">Screenshots</h1>
+      <div className="grid grid-cols-6 gap-3 my-5">
+        {screenshots.map((screenshot) => (
+          <div key={screenshot.id}>
+            <img
+              src={screenshot.image}
+              alt="Screenshot"
+              className="aspect-square object-cover rounded"
+            />
+          </div>
+        ))}
+      </div>
+    </>
+  );
+};
