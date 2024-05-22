@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import apiClient from "../../services/apiClient";
 import PlatformIcons from "./PlatformIcons";
 import Description from "../GameDetail/Description";
-import Requirements from "../GameDetail/Requirements";
-
+import SystemRequirements from "../GameDetail/SystemRequirements";
 
 // Trailer
 interface Video {
@@ -229,7 +228,7 @@ const GameDetail = () => {
                 ))}
             </div>
 
-            <Requirements
+            <SystemRequirements
               minimum={gameDetail.platforms[0].requirements.minimum}
               recommended={gameDetail.platforms[0].requirements.recommended}
             />
