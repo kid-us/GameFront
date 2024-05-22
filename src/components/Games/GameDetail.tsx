@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import apiClient from "../../services/apiClient";
 import PlatformIcons from "./PlatformIcons";
 import Description from "../GameDetail/Description";
+import Requirements from "../GameDetail/Requirements";
+
 
 // Trailer
 interface Video {
@@ -227,27 +229,10 @@ const GameDetail = () => {
                 ))}
             </div>
 
-            <p className="font-poppins text-lg my-6">System Requirements</p>
-            <div className="grid grid-cols-2 bg-zinc-950 rounded p-14 gap-5 mb-10">
-              <div>
-                {gameDetail.platforms[0].requirements.minimum
-                  .split("\n")
-                  .map((line, index) => (
-                    <p className="font-poppins text-gray-300" key={index}>
-                      {line}
-                    </p>
-                  ))}
-              </div>
-              <div>
-                {gameDetail.platforms[0].requirements.recommended
-                  .split("\n")
-                  .map((line, index) => (
-                    <p className="font-poppins text-gray-300" key={index}>
-                      {line}
-                    </p>
-                  ))}
-              </div>
-            </div>
+            <Requirements
+              minimum={gameDetail.platforms[0].requirements.minimum}
+              recommended={gameDetail.platforms[0].requirements.recommended}
+            />
           </div>
         </>
       )}
