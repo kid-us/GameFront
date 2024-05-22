@@ -3,6 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import { useEffect, useState } from "react";
 import apiClient from "../../services/apiClient";
 import PlatformIcons from "./PlatformIcons";
+import Description from "../GameDetail/Description";
 
 // Trailer
 interface Video {
@@ -206,12 +207,12 @@ const GameDetail = () => {
           </div>
 
           <div className="container mx-auto text-white mt-5">
-            <h1 className="text-lg mb-5">{gameDetail.name}</h1>
-            <p className="font-poppins text-gray-300">
-              {gameDetail.description
-                .split("<p>Español")[0]
-                .replace(/<\/?p>|<br\s*\/?>/g, "")}
-            </p>
+            {/* Description */}
+
+            <Description
+              name={gameDetail.name}
+              description={gameDetail.description}
+            />
             <h1 className="mt-10 text-lg">Screenshots</h1>
             <div className="grid grid-cols-6 gap-3 my-5">
               {screenshot &&
