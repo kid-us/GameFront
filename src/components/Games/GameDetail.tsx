@@ -7,22 +7,6 @@ import Description from "../GameDetail/Description";
 import SystemRequirements from "../GameDetail/SystemRequirements";
 import { Screenshot } from "../GameDetail/Screenshot";
 
-// Trailer
-interface Video {
-  vid: string;
-  max: string;
-}
-
-interface TrailerData {
-  data: Video;
-  id: number;
-  preview: string;
-}
-
-interface TrailerResponse {
-  results: TrailerData[];
-}
-
 // Game Info
 interface Platform {
   id: number;
@@ -72,19 +56,12 @@ const GameDetail = () => {
   const { id } = useParams();
 
   const [gameDetail, setGameDetail] = useState<GameDetail>();
-  const [trailer, setTrailer] = useState<TrailerData[]>([]);
   const [screenshot, setScreenshot] = useState<Screenshots[]>([]);
-
-  const [view, setView] = useState("image");
 
   useEffect(() => {
     apiClient.get<GameDetail>(`/games/${id}`).then((res) => {
       setGameDetail(res.data);
       console.log(res.data);
-    });
-    apiClient.get<TrailerResponse>(`/games/${id}/movies`).then((res) => {
-      setTrailer(res.data.results);
-      console.log(res.data.results);
     });
     apiClient
       .get<ScreenshotResponse>(`/games/${id}/screenshots`)
@@ -128,22 +105,11 @@ const GameDetail = () => {
               {/* Info */}
               <div className="flex gap-5 justify-between">
                 <div className="w-[80%]">
-                  {view === "image" && (
-                    <img
-                      src={gameDetail.background_image}
-                      alt="Game"
-                      className="lg:aspect-video aspect-square sm:aspect-square shadow shadow-teal-200 h-[90%] w-full object-cover rounded-lg"
-                    />
-                  )}
-                  {view === "video" && trailer && (
-                    <video
-                      src={trailer[0].data.max}
-                      className="lg:aspect-video aspect-square sm:aspect-square shadow shadow-teal-200 h-[90%] w-full object-cover rounded-lg"
-                      muted
-                      autoPlay
-                      loop
-                    ></video>
-                  )}
+                  <img
+                    src={gameDetail.background_image}
+                    alt="Game"
+                    className="lg:aspect-video aspect-square sm:aspect-square shadow shadow-teal-200 h-[90%] w-full object-cover rounded-lg"
+                  />
                 </div>
                 <div className="w-[20%] bg-zinc-950 rounded-md px-5 py-5 text-sm mb-14">
                   <p className="mb-5 font-semibold">Preview</p>
@@ -182,35 +148,11 @@ const GameDetail = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center gap-3">
-                <div className="bg-white w-[10%]">
-                  <img
-                    src={gameDetail.background_image}
-                    alt="Preview"
-                    className="cursor-pointer hover:grayscale-[0] grayscale-[1] rounded shadow-sm shadow-teal-50"
-                    onClick={() => setView("image")}
-                  />
-                </div>
-                <div className="w-[10%]">
-                  <div
-                    className="relative cursor-pointer"
-                    onClick={() => setView("video")}
-                  >
-                    <img
-                      src={trailer[0].preview}
-                      alt="Preview"
-                      className="hover:grayscale-[0] grayscale-[1] rounded shadow-sm shadow-teal-50"
-                    />
-                    <span className="absolute w-full top-0 bi-play-fill text-5xl text-center mt-3"></span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
           <div className="container mx-auto text-white mt-5">
             {/* Description */}
-
             <Description
               name={gameDetail.name}
               description={gameDetail.description}
@@ -218,10 +160,12 @@ const GameDetail = () => {
 
             {screenshot && <Screenshot screenshots={screenshot} />}
 
-            <SystemRequirements
-              minimum={gameDetail.platforms[0].requirements.minimum}
-              recommended={gameDetail.platforms[0].requirements.recommended}
-            />
+            {Object.keys(gameDetail.platforms[0].requirements).length != 0 && (
+              <SystemRequirements
+                minimum={gameDetail.platforms[0].requirements.minimum}
+                recommended={gameDetail.platforms[0].requirements.recommended}
+              />
+            )}
           </div>
         </>
       )}
