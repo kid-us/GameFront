@@ -35,17 +35,17 @@ const Navbar = () => {
             <div>
               <img src={logo} alt="Logo" width={"80px"} />
             </div>
-            <div className="text-white font-semibold hidden md:block lg:block uppercase">
+            {/* <div className="text-white font-semibold hidden md:block lg:block uppercase">
               <p>Games</p>
             </div>
             <div className="text-white font-semibold hidden md:block lg:block uppercase">
               <p>Explore</p>
-            </div>
+            </div> */}
           </div>
 
-          <div className="text-white font-semibold hidden md:block lg:block">
+          {/* <div className="text-white font-semibold hidden md:block lg:block">
             <p>Search</p>
-          </div>
+          </div> */}
           <div className="text-white font-semibold lg:hidden md:hidden">
             <p
               onClick={() => setShowModal(!showModal)}
