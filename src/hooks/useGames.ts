@@ -35,23 +35,50 @@ const useGames = () => {
 
   // Get Games
   useEffect(() => {
-    const fetchData = async () => {
-      updateLoading(true);
-      try {
-        const response = await apiClient.get<FetchGamesResponse>("/games");
-        updateGame(response.data.results);
-        updateCount(response.data.count);
-        updateNext(response.data.next);
-        updatePrevious(response.data.previous);
-      } catch (error) {
-        updateLoading(true);
-        console.error(error);
-      } finally {
-        updateLoading(false);
-      }
-    };
+    // Get the current URL
+    var currentURL = window.location.href;
+    // Extract the page value from the current URL
+    var match = currentURL.match(/[?&]page=(\d+)/);
 
-    fetchData();
+    // Check if a match is found
+    if (match !== null) {
+      var pageValue = match[1];
+      const fetchData = async () => {
+        updateLoading(true);
+        try {
+          const response = await apiClient.get<FetchGamesResponse>(
+            `/games?key=675af585f19843d596b1f429b55d94e7&page=${pageValue}`
+          );
+          updateGame(response.data.results);
+          updateCount(response.data.count);
+          updateNext(response.data.next);
+          updatePrevious(response.data.previous);
+        } catch (error) {
+          updateLoading(true);
+          console.error(error);
+        } finally {
+          updateLoading(false);
+        }
+      };
+      fetchData();
+    } else {
+      const fetchData = async () => {
+        updateLoading(true);
+        try {
+          const response = await apiClient.get<FetchGamesResponse>("/games");
+          updateGame(response.data.results);
+          updateCount(response.data.count);
+          updateNext(response.data.next);
+          updatePrevious(response.data.previous);
+        } catch (error) {
+          updateLoading(true);
+          console.error(error);
+        } finally {
+          updateLoading(false);
+        }
+      };
+      fetchData();
+    }
   }, []);
 
   // Games selected by Genres
@@ -134,6 +161,16 @@ const useGames = () => {
   // Next Games Page
   const handleNextPageGames = async (url: string | null) => {
     if (url) {
+      var currentURL = window.location.href;
+      var match = url.match(/page=(\d+)/);
+
+      if (match !== null) {
+        var pageValue = match[1];
+        var updatedURL = currentURL.replace(/[?&]page=\d+/, "");
+        var newURL = updatedURL + "?page=" + pageValue;
+        window.location.href = newURL;
+      }
+
       updateLoading(true);
       try {
         const response = await apiClient.get<FetchGamesResponse>(url);
@@ -152,6 +189,18 @@ const useGames = () => {
   // Previous Games Page
   const handlePreviousPageGames = async (url: string | null) => {
     if (url) {
+      var currentURL = window.location.href;
+      var match = url.match(/page=(\d+)/);
+
+      if (match !== null) {
+        var pageValue = match[1];
+        var updatedURL = currentURL.replace(/[?&]page=\d+/, "");
+        var newURL = updatedURL + "?page=" + pageValue;
+        window.location.href = newURL;
+      } else {
+        window.location.href = "/";
+      }
+
       updateLoading(true);
       try {
         const response = await apiClient.get<FetchGamesResponse>(url);
