@@ -26,7 +26,11 @@ const Hero = ({ gameDetail }: Props) => {
     <div
       style={{
         backgroundSize: "cover",
-        backgroundImage: `linear-gradient(to bottom, rgba(1, 1, 1, 0.80), rgba(0, 0, 0, 0.99)), url("${gameDetail.background_image}")`,
+        backgroundImage: `linear-gradient(to bottom, rgba(1, 1, 1, 0.80), rgba(0, 0, 0, 0.99)), url("${
+          gameDetail.background_image_additional
+            ? gameDetail.background_image_additional
+            : gameDetail.background_image
+        }")`,
         backgroundPosition: "center top",
         paddingTop: "90px",
       }}

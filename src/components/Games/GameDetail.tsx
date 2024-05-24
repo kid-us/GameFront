@@ -9,6 +9,7 @@ import Hero from "../GameDetail/Hero";
 import Tags from "../GameDetail/Tags";
 import Stores from "../GameDetail/Stores";
 import Developer from "../GameDetail/Developer";
+import SimilarGames from "../GameDetail/SimilarGames";
 
 // Game Info
 interface Store {
@@ -97,12 +98,17 @@ interface ScreenshotResponse {
   results: Screenshots[];
 }
 
+interface SimilarGamesFetch {
+  count: number;
+  results: Similar[];
+}
+
 const GameDetail = () => {
   const { id } = useParams();
 
   const [gameDetail, setGameDetail] = useState<GameDetails>();
   const [screenshot, setScreenshot] = useState<Screenshots[]>([]);
-  const [similarGames, setSimilarGames] = useState<GameDetails>();
+  const [similarGames, setSimilarGames] = useState<Similar[]>([]);
 
   useEffect(() => {
     apiClient.get<GameDetails>(`/games/${id}`).then((res) => {
@@ -114,9 +120,9 @@ const GameDetail = () => {
       .then((res) => {
         setScreenshot(res.data.results);
       });
-    apiClient.get<GameDetails>(`/games/${id}/game-series`).then((res) => {
-      setSimilarGames(res.data);
-      console.log(res.data);
+    apiClient.get<SimilarGamesFetch>(`/games/${id}/game-series`).then((res) => {
+      setSimilarGames(res.data.results);
+      console.log(res.data.results);
     });
   }, []);
 
@@ -151,6 +157,9 @@ const GameDetail = () => {
                 recommended={gameDetail.platforms[0].requirements.recommended}
               />
             )}
+
+            {/* Similar Games */}
+            <SimilarGames name={gameDetail.name} similarGame={similarGames} />
           </div>
         </div>
       )}
