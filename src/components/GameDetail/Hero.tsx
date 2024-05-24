@@ -1,6 +1,6 @@
 import { GameDetails } from "../Games/GameDetail";
 import PlatformIcons from "../Games/PlatformIcons";
-import Genres from "./Genres";
+import GameGenres from "./GameGenres";
 
 interface Props {
   gameDetail: GameDetails;
@@ -49,7 +49,7 @@ const Hero = ({ gameDetail }: Props) => {
           </div>
           <div className="w-[20%] bg-zinc-950 rounded-md px-5 py-5 text-sm mb-14">
             <p className="mb-5 font-semibold"># Preview</p>
-            <Genres genres={gameDetail.genres} />
+            <GameGenres genres={gameDetail.genres} />
             <p className="space-x-2 font-semibold text-gray-400">
               Rate {handleRate(gameDetail.rating.toFixed(0))}
               <span className="font-mono">{gameDetail.rating.toFixed(1)}</span>
