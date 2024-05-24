@@ -131,6 +131,7 @@ const useGames = () => {
     }
   };
 
+  // Next Games Page
   const handleNextPageGames = async (url: string | null) => {
     if (url) {
       updateLoading(true);
@@ -148,6 +149,7 @@ const useGames = () => {
     }
   };
 
+  // Previous Games Page
   const handlePreviousPageGames = async (url: string | null) => {
     if (url) {
       updateLoading(true);

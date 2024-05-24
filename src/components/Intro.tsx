@@ -30,7 +30,7 @@ const Intro = () => {
       }
     };
 
-    setTimeout(changeIntro, 5000);
+    setTimeout(changeIntro, 10_000);
   }, [intro]);
 
   const changeImage = (id: number) => {

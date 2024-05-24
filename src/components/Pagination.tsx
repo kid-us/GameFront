@@ -7,7 +7,6 @@ interface Props {
 
 const Pagination = ({ next, previous }: Props) => {
   const { handleNextPageGames, handlePreviousPageGames } = useGames();
-  console.log(next);
 
   return (
     <div
@@ -31,7 +30,7 @@ const Pagination = ({ next, previous }: Props) => {
           onClick={() => handleNextPageGames(next)}
           className="bg-zinc-900 rounded-md te py-3 shadow shadow-teal-400 px-10 text-teal-500 font-poppins text-sm"
         >
-          {next !== null ? "Next" : "Load More"}
+          {previous !== null ? "Next" : "Load More"}
         </button>
       </div>
     </div>
