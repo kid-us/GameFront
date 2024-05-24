@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Search from "../Search/Search";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -63,12 +64,8 @@ const Navbar = () => {
               showModal ? "animate__fadeInDown" : "animate__fadeOutUp"
             } bg-zinc-950 h- w-full fixed z-10 top-[8.5%] border-t border-r-0 border-gray-800 text-white p-6`}
           >
-            <div className="mt-4 font-semibold">
-              <input
-                type="text"
-                className="animate__animated animate__lightSpeedInLeft w-full rounded p-3 bg-teal-950 text-white focus:outline-none-0 outline-none font-mono shadow-sm shadow-gray-500"
-                placeholder="Search"
-              />
+            <div className="mt-1 font-semibold relative">
+              <Search />
             </div>
           </div>
         </>
