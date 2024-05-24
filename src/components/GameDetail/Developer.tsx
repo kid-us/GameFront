@@ -8,7 +8,9 @@ const Developer = ({ devs }: Props) => {
     <div>
       <p className="font-poppins text-lg my-6 text-gray-400">Developers</p>
       {devs.map((dev) => (
-        <p key={dev.id}>{dev.name}</p>
+        <p key={dev.id} className="bi-code font-poppins">
+          {dev.name}
+        </p>
       ))}
     </div>
   );

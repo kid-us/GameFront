@@ -125,7 +125,10 @@ const GameDetail = () => {
             {/* Screenshot */}
             {screenshot && <Screenshot screenshots={screenshot} />}
             {/* Developers */}
-            <Developer devs={gameDetail.developers} />
+            <div className="grid grid-cols-2">
+              <Developer devs={gameDetail.developers} />
+              <Tags />
+            </div>
             {/* System Requirements */}
             {Object.keys(gameDetail.platforms[0].requirements).length != 0 && (
               <SystemRequirements
