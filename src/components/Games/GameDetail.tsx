@@ -122,7 +122,6 @@ const GameDetail = () => {
       });
     apiClient.get<SimilarGamesFetch>(`/games/${id}/game-series`).then((res) => {
       setSimilarGames(res.data.results);
-      console.log(res.data.results);
     });
   }, []);
 

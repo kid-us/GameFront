@@ -12,7 +12,7 @@ const Tags = ({ tag }: Props) => {
         {tag.map((t) => (
           <span
             key={t.id}
-            className="text-sm font-bold text-gray-200 bi-hash text-nowrap"
+            className="text-sm font-bold text-teal-400 bi-hash text-nowrap"
           >
             {t.name}
           </span>

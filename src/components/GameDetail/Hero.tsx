@@ -50,11 +50,11 @@ const Hero = ({ gameDetail }: Props) => {
           <div className="w-[20%] bg-zinc-950 rounded-md px-5 py-5 text-sm mb-14">
             <p className="mb-5 font-semibold"># Preview</p>
             <Genres genres={gameDetail.genres} />
-            <p className="space-x-2 font-semibold">
+            <p className="space-x-2 font-semibold text-gray-400">
               Rate {handleRate(gameDetail.rating.toFixed(0))}
               <span className="font-mono">{gameDetail.rating.toFixed(1)}</span>
             </p>
-            <p className="bi-stopwatch font-semibold my-4">
+            <p className="bi-stopwatch font-semibold my-4 text-gray-400">
               &nbsp; Average Playtime
               <span className="text-teal-200 font-bold font-mono">
                 {" "}
@@ -62,12 +62,12 @@ const Hero = ({ gameDetail }: Props) => {
               </span>{" "}
               hr
             </p>
-            <p className="mb-1 font-semibold mt-5">Release</p>
-            <p className="font-mono font-semibold text-gray-400">
+            <p className="mb-1 font-semibold mt-5 text-gray-400">Release</p>
+            <p className="font-mono font-semibold text-teal-400">
               {gameDetail.released}
             </p>
-            <p className="mb-1 font-semibold mt-5">Publisher</p>
-            <p className="text-gray-400 text-sm font-semibold">
+            <p className="mb-1 font-semibold mt-5 text-gray-400">Publisher</p>
+            <p className="text-teal-400 text-sm font-semibold">
               {gameDetail.publishers[0].name}
             </p>
             <img
