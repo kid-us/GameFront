@@ -8,7 +8,6 @@ import { Screenshot } from "../GameDetail/Screenshot";
 import Hero from "../GameDetail/Hero";
 import Tags from "../GameDetail/Tags";
 import Stores from "../GameDetail/Stores";
-import Genres from "../GameDetail/Genres";
 
 // Game Info
 interface Store {
@@ -119,7 +118,6 @@ const GameDetail = () => {
                 <Description description={gameDetail.description} />
               </div>
               <div className="mt-10 bg-zinc-900 rounded p-4">
-                <Genres genres={gameDetail.genres} />
                 <Stores store={gameDetail} />
               </div>
             </div>
