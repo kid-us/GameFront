@@ -8,6 +8,7 @@ import { Screenshot } from "../GameDetail/Screenshot";
 import Hero from "../GameDetail/Hero";
 import Tags from "../GameDetail/Tags";
 import Stores from "../GameDetail/Stores";
+import Developer from "../GameDetail/Developer";
 
 // Game Info
 interface Store {
@@ -22,7 +23,7 @@ export interface GameStores {
   store: Store;
 }
 
-interface Developers {
+export interface Developers {
   id: number;
   name: string;
 }
@@ -113,7 +114,7 @@ const GameDetail = () => {
 
           <div className="container mx-auto text-white mt-5">
             <div className="grid grid-cols-3 justify-between gap-10">
-              {/* Description */}
+              {/* Description  and Stores*/}
               <div className="col-span-2">
                 <Description description={gameDetail.description} />
               </div>
@@ -121,9 +122,11 @@ const GameDetail = () => {
                 <Stores store={gameDetail} />
               </div>
             </div>
-
+            {/* Screenshot */}
             {screenshot && <Screenshot screenshots={screenshot} />}
-
+            {/* Developers */}
+            <Developer devs={gameDetail.developers} />
+            {/* System Requirements */}
             {Object.keys(gameDetail.platforms[0].requirements).length != 0 && (
               <SystemRequirements
                 minimum={gameDetail.platforms[0].requirements.minimum}
