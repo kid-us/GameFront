@@ -22,14 +22,18 @@ export interface Game {
 
 export interface FetchGamesResponse {
   count: number;
+  next: string | null;
+  previous: string | null;
   results: Game[];
 }
 
 const useGames = () => {
-  const { updateGame, updateLoading } = useGameStore();
+  const { updateGame, updateLoading, updateNext, updatePrevious } =
+    useGameStore();
   const { updateCount } = useGameCountStore();
   const { setSelectedGenre } = useSelectedGenreStore();
 
+  // Get Games
   useEffect(() => {
     const fetchData = async () => {
       updateLoading(true);
@@ -37,6 +41,8 @@ const useGames = () => {
         const response = await apiClient.get<FetchGamesResponse>("/games");
         updateGame(response.data.results);
         updateCount(response.data.count);
+        updateNext(response.data.next);
+        updatePrevious(response.data.previous);
       } catch (error) {
         updateLoading(true);
         console.error(error);
@@ -48,6 +54,7 @@ const useGames = () => {
     fetchData();
   }, []);
 
+  // Games selected by Genres
   const handleGenreSelect = async (id: number) => {
     updateLoading(true);
     setSelectedGenre(id);
@@ -57,6 +64,8 @@ const useGames = () => {
       );
       updateGame(response.data.results);
       updateCount(response.data.count);
+      updateNext(response.data.next);
+      updatePrevious(response.data.previous);
     } catch (error) {
       updateLoading(true);
       console.error(error);
@@ -65,6 +74,7 @@ const useGames = () => {
     }
   };
 
+  // Games selected by Platforms
   const handlePlatformSelect = async (id: number) => {
     updateLoading(true);
     try {
@@ -73,6 +83,8 @@ const useGames = () => {
       );
       updateGame(response.data.results);
       updateCount(response.data.count);
+      updateNext(response.data.next);
+      updatePrevious(response.data.previous);
     } catch (error) {
       updateLoading(true);
       console.error(error);
@@ -81,6 +93,7 @@ const useGames = () => {
     }
   };
 
+  // Games selected by Orders
   const handleOrder = async (value: string) => {
     updateLoading(true);
     try {
@@ -89,6 +102,8 @@ const useGames = () => {
       );
       updateGame(response.data.results);
       updateCount(response.data.count);
+      updateNext(response.data.next);
+      updatePrevious(response.data.previous);
     } catch (error) {
       updateLoading(true);
       console.error(error);
@@ -97,6 +112,7 @@ const useGames = () => {
     }
   };
 
+  // Games Search
   const handleSearch = async (keyword: string) => {
     updateLoading(true);
     try {
@@ -105,6 +121,8 @@ const useGames = () => {
       );
       updateGame(response.data.results);
       updateCount(response.data.count);
+      updateNext(response.data.next);
+      updatePrevious(response.data.previous);
     } catch (error) {
       updateLoading(true);
       console.error(error);
@@ -113,11 +131,48 @@ const useGames = () => {
     }
   };
 
+  const handleNextPageGames = async (url: string | null) => {
+    if (url) {
+      updateLoading(true);
+      try {
+        const response = await apiClient.get<FetchGamesResponse>(url);
+        updateGame(response.data.results);
+        updateNext(response.data.next);
+        updatePrevious(response.data.previous);
+      } catch (error) {
+        updateLoading(true);
+        console.error(error);
+      } finally {
+        updateLoading(false);
+      }
+    }
+  };
+
+  const handlePreviousPageGames = async (url: string | null) => {
+    if (url) {
+      updateLoading(true);
+      try {
+        const response = await apiClient.get<FetchGamesResponse>(url);
+
+        updateGame(response.data.results);
+        updateNext(response.data.next);
+        updatePrevious(response.data.previous);
+      } catch (error) {
+        updateLoading(true);
+        console.error(error);
+      } finally {
+        updateLoading(false);
+      }
+    }
+  };
+
   return {
     handleGenreSelect,
     handlePlatformSelect,
     handleOrder,
     handleSearch,
+    handleNextPageGames,
+    handlePreviousPageGames,
   };
 };
 

@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import PlatformIcons from "./PlatformIcons";
 import { useGameStore } from "../../store/useGamesStore";
 import { photo } from "../../assets/img";
+import Pagination from "../Pagination";
 
 const Games = () => {
-  const { game, loading } = useGameStore();
+  const { game, loading, next, previous } = useGameStore();
 
   return (
     <>
@@ -87,11 +88,8 @@ const Games = () => {
           </>
         )}
       </div>
-      <div className="flex justify-center my-8">
-        <button className="bg-zinc-900 rounded-md te py-3 shadow shadow-teal-400 px-10 text-teal-500 font-poppins text-sm">
-          Load More
-        </button>
-      </div>
+
+      <Pagination next={next} previous={previous} />
     </>
   );
 };
