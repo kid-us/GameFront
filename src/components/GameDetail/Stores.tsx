@@ -7,7 +7,7 @@ interface Props {
 const Stores = ({ store }: Props) => {
   return (
     <>
-      <p className="font-poppins mb-5 text-gray-400">Stores</p>
+      <p className="font-poppins mb-5 text-gray-400">Where to Buy</p>
       <div className="grid grid-cols-2 gap-3">
         {store.stores.map((s) => (
           <Link
