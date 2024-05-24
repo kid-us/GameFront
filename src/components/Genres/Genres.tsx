@@ -1,7 +1,12 @@
 import useGenres from "../../hooks/useGenres";
 import useGames from "../../hooks/useGames";
 import { useSelectedGenreStore } from "../../store/useSelectedGenre";
-const Genres = () => {
+
+interface Props {
+  hideFilter: (value: boolean) => void;
+}
+
+const Genres = ({ hideFilter }: Props) => {
   const { genres, loading } = useGenres();
   const { handleGenreSelect } = useGames();
   const { id } = useSelectedGenreStore();
@@ -21,7 +26,12 @@ const Genres = () => {
         <>
           {genres?.map((genre) => (
             <div
-              onClick={() => handleGenreSelect(genre.id)}
+              onClick={() => {
+                handleGenreSelect(genre.id);
+                if (hideFilter) {
+                  hideFilter(false);
+                }
+              }}
               key={genre.id}
               className={`relative grid grid-cols-3 mb-5 cursor-pointer ${
                 id === genre.id &&

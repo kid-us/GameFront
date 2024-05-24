@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -32,22 +33,16 @@ const Navbar = () => {
         >
           <div className="flex justify-start gap-28">
             <div>
-              <p className="text-white font-poppins bi-controller text-lg">
+              <Link
+                to="/"
+                className="text-white font-poppins bi-controller text-lg"
+              >
                 {" "}
                 <span className="mx-1"></span> GameFront
-              </p>
+              </Link>
             </div>
-            {/* <div className="text-white font-semibold hidden md:block lg:block uppercase">
-              <p>Games</p>
-            </div>
-            <div className="text-white font-semibold hidden md:block lg:block uppercase">
-              <p>Explore</p>
-            </div> */}
           </div>
 
-          {/* <div className="text-white font-semibold hidden md:block lg:block">
-            <p>Search</p>
-          </div> */}
           <div className="text-white font-semibold lg:hidden md:hidden">
             <p
               onClick={() => setShowModal(!showModal)}

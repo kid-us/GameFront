@@ -65,7 +65,7 @@ const Filter = () => {
                   <span className="bi-caret-down-fill text-xs text-teal-500"></span>
                 </p>
                 <div className="overflow-scroll h-[70vh]">
-                  <Genres />
+                  <Genres hideFilter={(value) => setFilter(value)} />
                 </div>
               </div>
             </div>
