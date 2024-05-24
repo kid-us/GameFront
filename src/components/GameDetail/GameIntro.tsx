@@ -35,19 +35,19 @@ const Hero = ({ gameDetail }: Props) => {
         paddingTop: "90px",
       }}
     >
-      <div className="container mx-auto text-white">
-        <h1 className="text-white text-3xl mb-6">{gameDetail.name}</h1>
+      <div className="lg:container lg:mx-auto text-white ">
+        <h1 className="text-white text-3xl mb-6 mx-2">{gameDetail.name}</h1>
 
         {/* Info */}
-        <div className="flex gap-5 justify-between">
-          <div className="w-[80%]">
+        <div className="lg:flex lg:gap-5 justify-between">
+          <div className="lg:w-[80%] lg:mx-0 mx-2">
             <img
               src={gameDetail.background_image}
               alt="Game"
               className="lg:aspect-video aspect-square sm:aspect-square shadow shadow-teal-200 h-[90%] w-full object-cover rounded-lg"
             />
           </div>
-          <div className="w-[20%] bg-zinc-950 rounded-md px-5 py-5 text-sm mb-14">
+          <div className="lg:w-[20%] bg-zinc-950 rounded-md px-5 py-5 text-sm mb-14">
             <p className="mb-5 font-semibold"># Preview</p>
             <GameGenres genres={gameDetail.genres} />
             <p className="space-x-2 font-semibold text-gray-400">

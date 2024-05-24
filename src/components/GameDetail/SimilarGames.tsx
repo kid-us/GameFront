@@ -9,11 +9,11 @@ interface Props {
 const SimilarGames = ({ name, similarGame }: Props) => {
   return (
     <div>
-      <p className="text-lg my-10 font-poppins text-gray-400">
+      <p className="text-lg my-10 font-poppins text-gray-400 lg:px-0 px-3">
         Games like <span className="text-teal-400 font-poppins">{name}</span>
       </p>
 
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid lg:grid-cols-5 grid-cols-3 gap-4 lg:px-0 px-3">
         {similarGame.map((similar) => (
           <Link
             to={`/${similar.id}`}
@@ -25,11 +25,9 @@ const SimilarGames = ({ name, similarGame }: Props) => {
               alt="Similar Games"
               className="aspect-square object-cover rounded grayscale-[50%] hover:grayscale-0"
             />
-            <div className="flex">
-              <p className="font-poppins text-xs mt-2 text-gray-400">
-                {similar.name}
-              </p>
-            </div>
+            <p className="font-poppins text-nowrap overflow-hidden text-xs mt-2 text-gray-400">
+              {similar.name}
+            </p>
           </Link>
         ))}
       </div>

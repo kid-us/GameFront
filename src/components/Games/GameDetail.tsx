@@ -113,7 +113,6 @@ const GameDetail = () => {
   useEffect(() => {
     apiClient.get<GameDetails>(`/games/${id}`).then((res) => {
       setGameDetail(res.data);
-      // console.log(res.data);
     });
     apiClient
       .get<ScreenshotResponse>(`/games/${id}/screenshots`)
@@ -133,9 +132,9 @@ const GameDetail = () => {
           <GameIntro gameDetail={gameDetail} />
 
           <div className="container mx-auto text-white mt-5">
-            <div className="grid grid-cols-3 justify-between gap-10">
+            <div className="lg:grid lg:grid-cols-3 justify-between lg:gap-10">
               {/* Description  and Stores*/}
-              <div className="col-span-2">
+              <div className="lg:col-span-2 lg:px-0 px-3">
                 <Description description={gameDetail.description} />
               </div>
               <div className="mt-10 bg-zinc-900 rounded p-4">
@@ -145,7 +144,7 @@ const GameDetail = () => {
             {/* Screenshot */}
             {screenshot && <Screenshot screenshots={screenshot} />}
             {/* Developers */}
-            <div className="grid grid-cols-2">
+            <div className="lg:grid lg:grid-cols-2 lg:px-0 px-3">
               <Developer devs={gameDetail.developers} />
               <Tags tag={gameDetail.tags} />
             </div>
