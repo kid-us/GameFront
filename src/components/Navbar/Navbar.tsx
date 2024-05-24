@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { logo } from "../../assets/img";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -33,7 +32,10 @@ const Navbar = () => {
         >
           <div className="flex justify-start gap-28">
             <div>
-              <img src={logo} alt="Logo" width={"80px"} />
+              <p className="text-white font-poppins bi-controller text-lg">
+                {" "}
+                <span className="mx-1"></span> GameFront
+              </p>
             </div>
             {/* <div className="text-white font-semibold hidden md:block lg:block uppercase">
               <p>Games</p>
