@@ -88,7 +88,7 @@ const Games = () => {
         )}
       </div>
       <div className="flex justify-center my-8">
-        <button className="bg-teal-600 rounded-md te py-2 shadow shadow-zinc-50 px-10 text-zinc-900">
+        <button className="bg-zinc-900 rounded-md te py-3 shadow shadow-teal-400 px-10 text-teal-500 font-poppins text-sm">
           Load More
         </button>
       </div>
