@@ -47,10 +47,8 @@ const Navbar = () => {
             <p
               onClick={() => setShowModal(!showModal)}
               className={`${
-                showModal
-                  ? "bi-x-lg"
-                  : "bi-dpad-fill border px-3 rounded py-1 border-zinc-500"
-              }  text-2xl`}
+                showModal ? "bi-x-lg" : "bi-dpad-fill px-3 rounded py-1"
+              }  text-xl`}
             ></p>
           </div>
         </div>
@@ -63,7 +61,7 @@ const Navbar = () => {
           <div
             className={`animate__animated ${
               showModal ? "animate__fadeInDown" : "animate__fadeOutUp"
-            } bg-zinc-950 h- w-full fixed z-10 top-[13.5%] border-t border-r-0 border-gray-800 text-white p-6`}
+            } bg-zinc-950 h- w-full fixed z-10 top-[8.5%] border-t border-r-0 border-gray-800 text-white p-6`}
           >
             <div className="mt-4 font-semibold">
               <input
@@ -71,12 +69,6 @@ const Navbar = () => {
                 className="animate__animated animate__lightSpeedInLeft w-full rounded p-3 bg-teal-950 text-white focus:outline-none-0 outline-none font-mono shadow-sm shadow-gray-500"
                 placeholder="Search"
               />
-              <p className="mt-5 text-lg animate__animated animate__lightSpeedInLeft">
-                Games
-              </p>
-              <p className="mt-5 text-lg animate__animated animate__lightSpeedInLeft">
-                Explore
-              </p>
             </div>
           </div>
         </>
