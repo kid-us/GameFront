@@ -77,6 +77,16 @@ export interface GameDetails {
   developers: Developers[];
 }
 
+export interface Similar {
+  id: number;
+  name: string;
+  background_image: string;
+  background_image_additional: string;
+  released: string;
+  rating: number;
+  playtime: number;
+}
+
 // Screenshot
 export interface Screenshots {
   id: number;
@@ -92,17 +102,22 @@ const GameDetail = () => {
 
   const [gameDetail, setGameDetail] = useState<GameDetails>();
   const [screenshot, setScreenshot] = useState<Screenshots[]>([]);
+  const [similarGames, setSimilarGames] = useState<GameDetails>();
 
   useEffect(() => {
     apiClient.get<GameDetails>(`/games/${id}`).then((res) => {
       setGameDetail(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     });
     apiClient
       .get<ScreenshotResponse>(`/games/${id}/screenshots`)
       .then((res) => {
         setScreenshot(res.data.results);
       });
+    apiClient.get<GameDetails>(`/games/${id}/game-series`).then((res) => {
+      setSimilarGames(res.data);
+      console.log(res.data);
+    });
   }, []);
 
   return (
