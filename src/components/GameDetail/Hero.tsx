@@ -23,7 +23,6 @@ const Hero = ({ gameDetail }: Props) => {
 
   return (
     <div
-      className=""
       style={{
         backgroundSize: "cover",
         backgroundImage: `linear-gradient(to bottom, rgba(1, 1, 1, 0.80), rgba(0, 0, 0, 0.99)), url("${gameDetail.background_image}")`,
@@ -32,7 +31,7 @@ const Hero = ({ gameDetail }: Props) => {
       }}
     >
       <div className="container mx-auto text-white">
-        <h1 className="text-white text-2xl mb-5">{gameDetail.name}</h1>
+        <h1 className="text-white text-3xl mb-6">{gameDetail.name}</h1>
 
         {/* Info */}
         <div className="flex gap-5 justify-between">

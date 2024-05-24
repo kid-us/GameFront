@@ -1,9 +1,25 @@
-import React from 'react'
+import { GameGenres } from "../Games/GameDetail";
 
-const Genres = () => {
-  return (
-    <div>Genres</div>
-  )
+interface Props {
+  genres: GameGenres[];
 }
 
-export default Genres
+const Genres = ({ genres }: Props) => {
+  return (
+    <>
+      <p className="font-poppins mb-4 text-gray-400">Genre</p>
+      <p className="space-x-5 font-bold">
+        {genres.map((genre) => (
+          <span
+            key={genre.id}
+            className="bg-teal-600 rounded py-1 px-5 text-sm"
+          >
+            {genre.name}
+          </span>
+        ))}
+      </p>
+    </>
+  );
+};
+
+export default Genres;

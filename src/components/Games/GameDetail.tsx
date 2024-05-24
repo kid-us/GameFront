@@ -7,6 +7,8 @@ import SystemRequirements from "../GameDetail/SystemRequirements";
 import { Screenshot } from "../GameDetail/Screenshot";
 import Hero from "../GameDetail/Hero";
 import Tags from "../GameDetail/Tags";
+import Stores from "../GameDetail/Stores";
+import Genres from "../GameDetail/Genres";
 
 // Game Info
 interface Store {
@@ -16,9 +18,9 @@ interface Store {
   image_background: string;
 }
 
-interface Stores {
+export interface GameStores {
   id: number;
-  stores: Store;
+  store: Store;
 }
 
 interface Developers {
@@ -26,7 +28,7 @@ interface Developers {
   name: string;
 }
 
-interface Genres {
+export interface GameGenres {
   id: number;
   name: string;
 }
@@ -69,9 +71,9 @@ export interface GameDetails {
   description: string;
   platforms: PlatformRequirements[];
   tags: Tags[];
-  genres: Genres[];
+  genres: GameGenres[];
   metacritic: number;
-  store: Stores[];
+  stores: GameStores[];
   developers: Developers[];
 }
 
@@ -111,14 +113,15 @@ const GameDetail = () => {
           <Hero gameDetail={gameDetail} />
 
           <div className="container mx-auto text-white mt-5">
-            <div className="grid grid-cols-2 justify-between">
+            <div className="grid grid-cols-3 justify-between gap-10">
               {/* Description */}
-              <Description
-                name={gameDetail.name}
-                description={gameDetail.description}
-              />
-              {/* Tags */}
-              <Tags />
+              <div className="col-span-2">
+                <Description description={gameDetail.description} />
+              </div>
+              <div className="mt-10 bg-zinc-900 rounded p-4">
+                <Genres genres={gameDetail.genres} />
+                <Stores store={gameDetail} />
+              </div>
             </div>
 
             {screenshot && <Screenshot screenshots={screenshot} />}
