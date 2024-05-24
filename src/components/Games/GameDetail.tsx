@@ -33,7 +33,7 @@ export interface GameGenres {
   name: string;
 }
 
-interface Tags {
+export interface Tag {
   id: number;
   name: string;
 }
@@ -70,7 +70,7 @@ export interface GameDetails {
   publishers: Publisher[];
   description: string;
   platforms: PlatformRequirements[];
-  tags: Tags[];
+  tags: Tag[];
   genres: GameGenres[];
   metacritic: number;
   stores: GameStores[];
@@ -127,7 +127,7 @@ const GameDetail = () => {
             {/* Developers */}
             <div className="grid grid-cols-2">
               <Developer devs={gameDetail.developers} />
-              <Tags />
+              <Tags tag={gameDetail.tags} />
             </div>
             {/* System Requirements */}
             {Object.keys(gameDetail.platforms[0].requirements).length != 0 && (
