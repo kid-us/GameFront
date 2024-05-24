@@ -5,7 +5,7 @@ import apiClient from "../../services/apiClient";
 import Description from "../GameDetail/Description";
 import SystemRequirements from "../GameDetail/SystemRequirements";
 import { Screenshot } from "../GameDetail/Screenshot";
-import Hero from "../GameDetail/Hero";
+import GameIntro from "../GameDetail/GameIntro";
 import Tags from "../GameDetail/Tags";
 import Stores from "../GameDetail/Stores";
 import Developer from "../GameDetail/Developer";
@@ -130,7 +130,7 @@ const GameDetail = () => {
       <Navbar />
       {gameDetail && (
         <div>
-          <Hero gameDetail={gameDetail} />
+          <GameIntro gameDetail={gameDetail} />
 
           <div className="container mx-auto text-white mt-5">
             <div className="grid grid-cols-3 justify-between gap-10">
