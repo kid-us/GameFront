@@ -30,7 +30,7 @@ const Intro = () => {
       }
     };
 
-    setTimeout(changeIntro, 10_000);
+    setTimeout(changeIntro, 5000);
   }, [intro]);
 
   const changeImage = (id: number) => {
@@ -48,7 +48,7 @@ const Intro = () => {
         }}
       >
         <div className="container mx-auto mt-24">
-          <div className="grid grid-cols-12 gap-4">
+          <div className="lg:grid md:grid lg:grid-cols-12 md:grid-cols-12 gap-4">
             <div className="relative col-span-11 w-full">
               {playVideo && (
                 <video
@@ -77,7 +77,7 @@ const Intro = () => {
                       </h1>
                       <p
                         onClick={() => setPlayVideo(!playVideo)}
-                        className="lg:hidden md:hidden sm:block text-teal-950 font-semibold font-poppins text-lg mt-2  mb-3 uppercase cursor-pointer"
+                        className="lg:hidden md:hidden sm:block text-teal-500 font-semibold font-poppins text-lg mt-2  mb-3 uppercase cursor-pointer"
                       >
                         <span
                           className={`${
@@ -112,14 +112,14 @@ const Intro = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-5">
-              <div className="bg-zinc-950 rounded px-1 py-5">
+            <div className="lg:mt-5 md:mt-5">
+              <div className="rounded px-1 py-5 lg:block flex  overflow-x-scroll gap-2">
                 {videos.map((video) => (
                   <img
                     key={video.id}
                     src={video.cover}
                     alt="Covers"
-                    className={`rounded shadow-teal-400 shadow-sm cursor-pointer mb-5 ${
+                    className={`w-14 h-10 object-cover lg:w-full g:h-full md:w-full md:h-full l rounded shadow-teal-400 shadow-sm cursor-pointer lg:mb-5 md:mb-5 ${
                       intro[0].id === video.id ? "grayscale-0" : "grayscale"
                     } hover:grayscale-0`}
                     onClick={() => changeImage(video.id)}

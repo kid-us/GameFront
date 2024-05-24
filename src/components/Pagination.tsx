@@ -7,7 +7,6 @@ interface Props {
 
 const Pagination = ({ next, previous }: Props) => {
   const { handleNextPageGames, handlePreviousPageGames } = useGames();
-  console.log(previous);
 
   return (
     <div
