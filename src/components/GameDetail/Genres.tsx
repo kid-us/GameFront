@@ -8,12 +8,9 @@ const Genres = ({ genres }: Props) => {
   return (
     <>
       <p className="font-poppins mb-2 text-gray-400">Genre</p>
-      <p className="space-x-2 font-bold mb-4">
+      <p className="font-bold mb-4 space-x-2">
         {genres.map((genre) => (
-          <span
-            key={genre.id}
-            className="bg-teal-900 text-gray-400 rounded py-1 px-5 text-sm"
-          >
+          <span key={genre.id} className="text-teal-400 rounded text-xs">
             {genre.name}
           </span>
         ))}
