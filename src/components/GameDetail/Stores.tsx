@@ -11,6 +11,7 @@ const Stores = ({ store }: Props) => {
       <div className="grid grid-cols-2 gap-3">
         {store.stores.map((s) => (
           <Link
+            key={s.id}
             to={s.store.domain}
             className="p-3 rounded-md"
             style={{
