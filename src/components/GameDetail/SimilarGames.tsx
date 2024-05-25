@@ -23,7 +23,7 @@ const SimilarGames = ({ name, similarGame }: Props) => {
             <img
               src={similar.background_image}
               alt="Similar Games"
-              className="aspect-square object-cover rounded grayscale-[50%] hover:grayscale-0"
+              className="aspect-square object-cover rounded"
             />
             <p className="font-poppins text-nowrap overflow-hidden text-xs mt-2 text-gray-400">
               {similar.name}
