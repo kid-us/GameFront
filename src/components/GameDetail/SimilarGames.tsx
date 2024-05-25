@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Similar } from "../Games/GameDetail";
+import { photo } from "../../assets/img";
 
 interface Props {
   name: string;
@@ -21,7 +22,7 @@ const SimilarGames = ({ name, similarGame }: Props) => {
             className="hover:-translate-y-2 duration-500"
           >
             <img
-              src={similar.background_image}
+              src={similar.background_image ? similar.background_image : photo}
               alt="Similar Games"
               className="aspect-square object-cover rounded"
             />
