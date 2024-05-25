@@ -2,7 +2,7 @@ import { photo } from "../../assets/img";
 
 const Loading = () => {
   return (
-    <div>
+    <div className="animate-blink">
       <div
         style={{
           backgroundSize: "cover",

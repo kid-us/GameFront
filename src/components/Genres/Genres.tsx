@@ -3,7 +3,7 @@ import useGames from "../../hooks/useGames";
 import { useSelectedGenreStore } from "../../store/useSelectedGenre";
 
 interface Props {
-  hideFilter: (value: boolean) => void;
+  hideFilter?: (value: boolean) => void;
 }
 
 const Genres = ({ hideFilter }: Props) => {
