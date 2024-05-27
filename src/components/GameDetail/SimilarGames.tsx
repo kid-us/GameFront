@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Similar } from "../Games/GameDetail";
 import { photo } from "../../assets/img";
 
@@ -16,10 +15,11 @@ const SimilarGames = ({ name, similarGame }: Props) => {
 
       <div className="grid lg:grid-cols-5 grid-cols-3 gap-4 lg:px-0 px-3">
         {similarGame.map((similar) => (
-          <Link
-            to={`/${similar.id}`}
+          <div
+            onClick={() => (window.location.href = `/${similar.id}`)}
+            // to={`/${similar.id}`}
             key={similar.id}
-            className="hover:-translate-y-2 duration-500"
+            className="hover:-translate-y-2 duration-500 cursor-pointer"
           >
             <img
               src={similar.background_image ? similar.background_image : photo}
@@ -29,7 +29,7 @@ const SimilarGames = ({ name, similarGame }: Props) => {
             <p className="font-poppins text-nowrap overflow-hidden text-xs mt-2 text-gray-400">
               {similar.name}
             </p>
-          </Link>
+          </div>
         ))}
       </div>
     </div>

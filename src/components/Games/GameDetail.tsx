@@ -116,6 +116,7 @@ const GameDetail = () => {
     apiClient.get<GameDetails>(`/games/${id}`).then((res) => {
       setGameDetail(res.data);
       setLoading(false);
+      console.log(res.data);
     });
     apiClient
       .get<ScreenshotResponse>(`/games/${id}/screenshots`)
@@ -157,16 +158,18 @@ const GameDetail = () => {
                   <Developer devs={gameDetail.developers} />
                   <Tags tag={gameDetail.tags} />
                 </div>
+
                 {/* System Requirements */}
-                {Object.keys(gameDetail.platforms[0].requirements).length !=
-                  0 && (
-                  <SystemRequirements
-                    minimum={gameDetail.platforms[0].requirements.minimum}
-                    recommended={
-                      gameDetail.platforms[0].requirements.recommended
-                    }
-                  />
-                )}
+                {gameDetail.platforms.length < 0 &&
+                  Object.keys(gameDetail.platforms[0].requirements).length !=
+                    0 && (
+                    <SystemRequirements
+                      minimum={gameDetail.platforms[0].requirements.minimum}
+                      recommended={
+                        gameDetail.platforms[0].requirements.recommended
+                      }
+                    />
+                  )}
 
                 {/* Similar Games */}
                 <SimilarGames
