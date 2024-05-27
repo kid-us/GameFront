@@ -3,7 +3,7 @@ import apiClient from "../services/apiClient";
 import { useGameStore } from "../store/useGamesStore";
 import { useGameCountStore } from "../store/useGameCountStore";
 import { useSelectedGenreStore } from "../store/useSelectedGenre";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export interface Platform {
   id: number;
@@ -29,7 +29,6 @@ export interface FetchGamesResponse {
 }
 
 const useGames = () => {
-  const navigate = useNavigate();
   const location = useLocation();
 
   const { updateGame, updateLoading, updateNext, updatePrevious } =
@@ -174,27 +173,32 @@ const useGames = () => {
   const handleNextPageGames = async (url: string | null) => {
     if (url) {
       const urls = new URL(window.location.href);
+      // Get the genre parameter from the URL
+      var currentURL = window.location.href;
       var match = url.match(/page=(\d+)/);
 
       const genreParam = urls.searchParams.get("genres");
       const searchParam = urls.searchParams.get("search");
 
-      if (match !== null) {
-        const pageValue = match[1];
-        const newSearchParams = new URLSearchParams(location.search);
-        if (genreParam) {
-          newSearchParams.set("genres", genreParam);
-        } else if (searchParam) {
-          newSearchParams.set("search", searchParam);
-          newSearchParams.set("page", pageValue);
+      if (genreParam) {
+        if (match !== null) {
+          const newUrl = `${urls.origin}${urls.pathname}?genres=${genreParam}`;
+          window.location.href = newUrl + `&page=${match[1]}`;
+          updateLoading(true);
         }
-
-        navigate({
-          pathname: location.pathname,
-          search: newSearchParams.toString(),
-        });
-
-        updateLoading(true);
+      } else if (searchParam) {
+        if (match !== null) {
+          window.location.href = `?search=${searchParam}&page=${match[1]}`;
+          updateLoading(true);
+        }
+      } else {
+        if (match !== null) {
+          var pageValue = match[1];
+          var updatedURL = currentURL.replace(/[?&]page=\d+/, "");
+          var newURL = updatedURL + "?page=" + pageValue;
+          window.location.href = newURL;
+          updateLoading(true);
+        }
       }
     }
   };
