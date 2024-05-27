@@ -180,6 +180,7 @@ const useGames = () => {
           var updatedURL = currentURL.replace(/[?&]page=\d+/, "");
           var newURL = updatedURL + "?page=" + pageValue;
           window.location.href = newURL;
+          updateLoading(true);
         }
       }
     }
@@ -188,10 +189,6 @@ const useGames = () => {
   // Previous Games Page
   const handlePreviousPageGames = async (url: string | null) => {
     if (url) {
-      console.log("ul");
-
-      // updateLoading(true);
-
       const urls = new URL(window.location.href);
       // Get the genre parameter from the URL
       var currentURL = window.location.href;
@@ -204,10 +201,12 @@ const useGames = () => {
       if (genreParam) {
         if (genreParam && pageParam == "2") {
           window.location.href = `${urls.origin}${urls.pathname}?genres=${genreParam}`;
+          updateLoading(true);
         } else {
           if (match !== null) {
             const newUrl = `${urls.origin}${urls.pathname}?genres=${genreParam}`;
             window.location.href = newUrl + `&page=${match[1]}`;
+            updateLoading(true);
           }
         }
       } else {
@@ -215,11 +214,12 @@ const useGames = () => {
         if (match !== null) {
           var pageValue = match[1];
           var updatedURL = currentURL.replace(/[?&]page=\d+/, "");
-
           var newURL = updatedURL + "?page=" + pageValue;
           window.location.href = newURL;
+          updateLoading(true);
         } else {
           window.location.href = "/";
+          updateLoading(true);
         }
       }
     }
