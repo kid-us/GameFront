@@ -160,7 +160,7 @@ const GameDetail = () => {
                 </div>
 
                 {/* System Requirements */}
-                {gameDetail.platforms.length < 0 &&
+                {gameDetail.platforms.length > 0 &&
                   Object.keys(gameDetail.platforms[0].requirements).length !=
                     0 && (
                     <SystemRequirements
