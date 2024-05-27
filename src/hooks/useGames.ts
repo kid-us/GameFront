@@ -3,7 +3,7 @@ import apiClient from "../services/apiClient";
 import { useGameStore } from "../store/useGamesStore";
 import { useGameCountStore } from "../store/useGameCountStore";
 import { useSelectedGenreStore } from "../store/useSelectedGenre";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export interface Platform {
   id: number;
@@ -30,6 +30,7 @@ export interface FetchGamesResponse {
 
 const useGames = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const { updateGame, updateLoading, updateNext, updatePrevious } =
     useGameStore();
@@ -41,8 +42,8 @@ const useGames = () => {
     const searchParams = new URLSearchParams(location.search);
 
     // Get the current URL
-    var currentURL = window.location.href;
-    var match = currentURL.match(/[?&]page=(\d+)/);
+    // var currentURL = window.location.href;
+    // var match = currentURL.match(/[?&]page=(\d+)/);
 
     const fetchData = async (url: string) => {
       updateLoading(true);
@@ -71,7 +72,6 @@ const useGames = () => {
     } else if (searchParams.get("genres") && !searchParams.get("page")) {
       fetchData(`/games?genres=${searchParams.get("genres")}`);
     } else if (searchParams.get("genres") && searchParams.get("page")) {
-      console.log("Nice");
       fetchData(
         `/games?key=675af585f19843d596b1f429b55d94e7?genres=${searchParams.get(
           "genres"
@@ -162,29 +162,26 @@ const useGames = () => {
   // Next Games Page
   const handleNextPageGames = async (url: string | null) => {
     if (url) {
-      console.log(url);
-
+      const urls = new URL(window.location.href);
+      // Get the genre parameter from the URL
       var currentURL = window.location.href;
       var match = url.match(/page=(\d+)/);
 
-      if (match !== null) {
-        var pageValue = match[1];
-        var updatedURL = currentURL.replace(/[?&]page=\d+/, "");
-        var newURL = updatedURL + "?page=" + pageValue;
-        window.location.href = newURL;
-      }
+      const genreParam = urls.searchParams.get("genres");
 
-      updateLoading(true);
-      try {
-        const response = await apiClient.get<FetchGamesResponse>(url);
-        updateGame(response.data.results);
-        updateNext(response.data.next);
-        updatePrevious(response.data.previous);
-      } catch (error) {
-        updateLoading(true);
-        console.error(error);
-      } finally {
-        updateLoading(false);
+      if (genreParam) {
+        if (match !== null) {
+          const newUrl = `${urls.origin}${urls.pathname}?genres=${genreParam}`;
+          window.location.href = newUrl + `&page=${match[1]}`;
+          updateLoading(true);
+        }
+      } else {
+        if (match !== null) {
+          var pageValue = match[1];
+          var updatedURL = currentURL.replace(/[?&]page=\d+/, "");
+          var newURL = updatedURL + "?page=" + pageValue;
+          window.location.href = newURL;
+        }
       }
     }
   };
@@ -192,15 +189,22 @@ const useGames = () => {
   // Previous Games Page
   const handlePreviousPageGames = async (url: string | null) => {
     if (url) {
-      // https://api.rawg.io/api/games?genres=51&key=675af585f19843d596b1f429b55d94e7&page=2
+      const urls = new URL(window.location.href);
+      // Get the genre parameter from the URL
       var currentURL = window.location.href;
       var match = url.match(/page=(\d+)/);
 
-      if (match !== null) {
+      const genreParam = urls.searchParams.get("genres");
+
+      if (genreParam) {
+        if (match !== null) {
+          const newUrl = `${urls.origin}${urls.pathname}?genres=${genreParam}`;
+          window.location.href = newUrl + `&page=${match[1]}`;
+          updateLoading(true);
+        }
+      } else if (match !== null) {
         var pageValue = match[1];
         var updatedURL = currentURL.replace(/[?&]page=\d+/, "");
-        const link = new URLSearchParams(url.split("?")[1]); // Extract query parameters from the URL
-        console.log(link.get("pages"), link.get("genres"));
 
         var newURL = updatedURL + "?page=" + pageValue;
         window.location.href = newURL;

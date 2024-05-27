@@ -16,6 +16,8 @@ const Genres = ({ hideFilter }: Props) => {
   const { id } = useSelectedGenreStore();
 
   const navigateToThis = (id: number) => {
+    navigate(window.location.pathname, { replace: true });
+
     const url = new URL(window.location.href);
     url.searchParams.set("genres", id.toString());
     navigate(`${url.pathname}${url.search}`, { replace: true });
@@ -41,7 +43,6 @@ const Genres = ({ hideFilter }: Props) => {
                 if (hideFilter) {
                   hideFilter(false);
                 }
-                // navigate()
                 navigateToThis(genre.id);
               }}
               key={genre.id}
@@ -49,8 +50,10 @@ const Genres = ({ hideFilter }: Props) => {
                 id === genre.id &&
                 "text-teal-600 rounded shadow-sm shadow-teal-700"
               } ${
-                Number(paramsId) === genre.id &&
-                "text-teal-600 rounded shadow-sm shadow-teal-700"
+                paramsId != null
+                  ? Number(paramsId) === genre.id &&
+                    "text-teal-600 rounded shadow-sm shadow-teal-700"
+                  : ""
               } `}
             >
               <img
