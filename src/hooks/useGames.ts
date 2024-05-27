@@ -174,7 +174,6 @@ const useGames = () => {
   const handleNextPageGames = async (url: string | null) => {
     if (url) {
       const urls = new URL(window.location.href);
-      // Get the genre parameter from the URL
       var match = url.match(/page=(\d+)/);
 
       const genreParam = urls.searchParams.get("genres");
@@ -184,27 +183,11 @@ const useGames = () => {
         const pageValue = match[1];
         const newSearchParams = new URLSearchParams(location.search);
         if (genreParam) {
-          // const newUrl = `${urls.origin}${urls.pathname}?genres=${genreParam}`;
-          // window.location.href = newUrl + `&page=${match[1]}`;
-          // updateLoading(true);
           newSearchParams.set("genres", genreParam);
         } else if (searchParam) {
-          // if (match !== null) {
-          //   window.location.href = `?search=${searchParam}&page=${match[1]}`;
-          //   updateLoading(true);
-          // }
           newSearchParams.set("search", searchParam);
           newSearchParams.set("page", pageValue);
         }
-        // else {
-        // if (match !== null) {
-        //   var pageValue = match[1];
-        //   var updatedURL = currentURL.replace(/[?&]page=\d+/, "");
-        //   var newURL = updatedURL + "?page=" + pageValue;
-        //   window.location.href = newURL;
-        //   updateLoading(true);
-        // }
-        // }
 
         navigate({
           pathname: location.pathname,
