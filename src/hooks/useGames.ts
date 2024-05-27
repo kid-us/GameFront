@@ -76,8 +76,10 @@ const useGames = () => {
           "genres"
         )}&page=${searchParams.get("page")}`
       );
+    } else if (searchParams.get("search")) {
+      fetchData(`/games?${searchParams.get("search")}`);
     } else {
-      fetchData("/games");
+      fetchData("/games?search=Far+Cry&page=2");
     }
   }, [location]);
 
