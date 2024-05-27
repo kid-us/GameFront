@@ -38,6 +38,8 @@ const useGames = () => {
 
   // Get Games
   useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+
     // Get the current URL
     var currentURL = window.location.href;
     var match = currentURL.match(/[?&]page=(\d+)/);
@@ -64,10 +66,12 @@ const useGames = () => {
       fetchData(
         `/games?key=675af585f19843d596b1f429b55d94e7&page=${pageValue}`
       );
+    } else if (searchParams.get("genres")) {
+      fetchData(`/games?genres=${searchParams.get("genres")}`);
     } else {
       fetchData("/games");
     }
-  }, []);
+  }, [location]);
 
   // Games selected by Genres
   const handleGenreSelect = async (id: number) => {

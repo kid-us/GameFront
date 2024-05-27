@@ -1,13 +1,15 @@
 import useGenres from "../../hooks/useGenres";
 import useGames from "../../hooks/useGames";
 import { useSelectedGenreStore } from "../../store/useSelectedGenre";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 interface Props {
   hideFilter?: (value: boolean) => void;
 }
 
 const Genres = ({ hideFilter }: Props) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const paramsId = new URLSearchParams(location.search).get("genres");
 
   const { genres, loading } = useGenres();
   const { handleGenreSelect } = useGames();
@@ -46,7 +48,10 @@ const Genres = ({ hideFilter }: Props) => {
               className={`relative grid grid-cols-3 mb-5 cursor-pointer ${
                 id === genre.id &&
                 "text-teal-600 rounded shadow-sm shadow-teal-700"
-              }`}
+              } ${
+                Number(paramsId) === genre.id &&
+                "text-teal-600 rounded shadow-sm shadow-teal-700"
+              } `}
             >
               <img
                 src={genre.image_background}
