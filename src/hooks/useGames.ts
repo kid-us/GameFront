@@ -77,9 +77,10 @@ const useGames = () => {
         )}&page=${searchParams.get("page")}`
       );
     } else if (searchParams.get("search")) {
-      fetchData(`/games?${searchParams.get("search")}`);
+      console.log(searchParams.get("search"));
+      fetchData(`/games?search=${searchParams.get("search")}`);
     } else {
-      fetchData("/games?search=Far+Cry&page=2");
+      fetchData("/games");
     }
   }, [location]);
 
@@ -144,6 +145,7 @@ const useGames = () => {
   // Games Search
   const handleSearch = async (keyword: string) => {
     updateLoading(true);
+    window.location.href = `/?search=${keyword}`;
     try {
       const response = await apiClient.get<FetchGamesResponse>(
         `/games?search=${keyword}`
