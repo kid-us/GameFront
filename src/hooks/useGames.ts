@@ -60,9 +60,11 @@ const useGames = () => {
       }
     };
 
-    // Check if a match is found
-    if (!searchParams.get("genres") && searchParams.get("page")) {
-      // var pageValue = match[1];
+    if (
+      !searchParams.get("genres") &&
+      !searchParams.get("search") &&
+      searchParams.get("page")
+    ) {
       fetchData(
         `/games?key=675af585f19843d596b1f429b55d94e7&page=${searchParams.get(
           "page"
@@ -76,9 +78,14 @@ const useGames = () => {
           "genres"
         )}&page=${searchParams.get("page")}`
       );
-    } else if (searchParams.get("search")) {
-      console.log(searchParams.get("search"));
+    } else if (searchParams.get("search") && !searchParams.get("page")) {
       fetchData(`/games?search=${searchParams.get("search")}`);
+    } else if (searchParams.get("search") && searchParams.get("page")) {
+      fetchData(
+        `/games?search=${searchParams.get("search")}&page=${searchParams.get(
+          "page"
+        )}`
+      );
     } else {
       fetchData("/games");
     }
@@ -171,11 +178,17 @@ const useGames = () => {
       var match = url.match(/page=(\d+)/);
 
       const genreParam = urls.searchParams.get("genres");
+      const searchParam = urls.searchParams.get("search");
 
       if (genreParam) {
         if (match !== null) {
           const newUrl = `${urls.origin}${urls.pathname}?genres=${genreParam}`;
           window.location.href = newUrl + `&page=${match[1]}`;
+          updateLoading(true);
+        }
+      } else if (searchParam) {
+        if (match !== null) {
+          window.location.href = `?search=${searchParam}&page=${match[1]}`;
           updateLoading(true);
         }
       } else {
@@ -200,6 +213,7 @@ const useGames = () => {
 
       const genreParam = urls.searchParams.get("genres");
       const pageParam = urls.searchParams.get("page");
+      const searchParam = urls.searchParams.get("search");
 
       // Games with Genres
       if (genreParam) {
@@ -210,6 +224,16 @@ const useGames = () => {
           if (match !== null) {
             const newUrl = `${urls.origin}${urls.pathname}?genres=${genreParam}`;
             window.location.href = newUrl + `&page=${match[1]}`;
+            updateLoading(true);
+          }
+        }
+      } else if (searchParam) {
+        if (searchParam && pageParam == "2") {
+          window.location.href = `${urls.origin}${urls.pathname}?search=${searchParam}`;
+          updateLoading(true);
+        } else {
+          if (match !== null) {
+            window.location.href = `?search=${searchParam}&page=${match[1]}`;
             updateLoading(true);
           }
         }
