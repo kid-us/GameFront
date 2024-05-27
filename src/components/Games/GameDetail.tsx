@@ -151,8 +151,10 @@ const GameDetail = () => {
                     <Stores store={gameDetail} />
                   </div>
                 </div>
+                
                 {/* Screenshot */}
                 {screenshot && <Screenshot screenshots={screenshot} />}
+
                 {/* Developers */}
                 <div className="lg:grid lg:grid-cols-2 lg:px-0 px-3">
                   <Developer devs={gameDetail.developers} />
