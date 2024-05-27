@@ -5,7 +5,7 @@ import useGames from "../../hooks/useGames";
 const PlatformSelector: React.FC = () => {
   const [showPlatforms, setShowPlatforms] = useState(false);
 
-  const { handlePlatformSelector } = useGames();
+  const { handlePlatformSelect } = useGames();
   return (
     <div className="relative">
       <button
@@ -25,7 +25,7 @@ const PlatformSelector: React.FC = () => {
           {platforms.map((platform) => (
             <button
               onClick={() => {
-                handlePlatformSelector(platform.id);
+                handlePlatformSelect(platform.id);
                 setShowPlatforms(false);
               }}
               key={platform.id}
