@@ -61,13 +61,22 @@ const useGames = () => {
     };
 
     // Check if a match is found
-    if (match !== null) {
-      var pageValue = match[1];
+    if (!searchParams.get("genres") && searchParams.get("page")) {
+      // var pageValue = match[1];
       fetchData(
-        `/games?key=675af585f19843d596b1f429b55d94e7&page=${pageValue}`
+        `/games?key=675af585f19843d596b1f429b55d94e7&page=${searchParams.get(
+          "page"
+        )}`
       );
-    } else if (searchParams.get("genres")) {
+    } else if (searchParams.get("genres") && !searchParams.get("page")) {
       fetchData(`/games?genres=${searchParams.get("genres")}`);
+    } else if (searchParams.get("genres") && searchParams.get("page")) {
+      console.log("Nice");
+      fetchData(
+        `/games?key=675af585f19843d596b1f429b55d94e7?genres=${searchParams.get(
+          "genres"
+        )}&page=${searchParams.get("page")}`
+      );
     } else {
       fetchData("/games");
     }
