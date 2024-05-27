@@ -3,6 +3,7 @@ import apiClient from "../services/apiClient";
 import { useGameStore } from "../store/useGamesStore";
 import { useGameCountStore } from "../store/useGameCountStore";
 import { useSelectedGenreStore } from "../store/useSelectedGenre";
+import { useLocation } from "react-router-dom";
 
 export interface Platform {
   id: number;
@@ -28,6 +29,8 @@ export interface FetchGamesResponse {
 }
 
 const useGames = () => {
+  const location = useLocation();
+
   const { updateGame, updateLoading, updateNext, updatePrevious } =
     useGameStore();
   const { updateCount } = useGameCountStore();
@@ -37,47 +40,32 @@ const useGames = () => {
   useEffect(() => {
     // Get the current URL
     var currentURL = window.location.href;
-    // Extract the page value from the current URL
     var match = currentURL.match(/[?&]page=(\d+)/);
+
+    const fetchData = async (url: string) => {
+      updateLoading(true);
+      try {
+        const response = await apiClient.get<FetchGamesResponse>(`${url}`);
+        updateGame(response.data.results);
+        updateCount(response.data.count);
+        updateNext(response.data.next);
+        updatePrevious(response.data.previous);
+      } catch (error) {
+        updateLoading(true);
+        console.error(error);
+      } finally {
+        updateLoading(false);
+      }
+    };
 
     // Check if a match is found
     if (match !== null) {
       var pageValue = match[1];
-      const fetchData = async () => {
-        updateLoading(true);
-        try {
-          const response = await apiClient.get<FetchGamesResponse>(
-            `/games?key=675af585f19843d596b1f429b55d94e7&page=${pageValue}`
-          );
-          updateGame(response.data.results);
-          updateCount(response.data.count);
-          updateNext(response.data.next);
-          updatePrevious(response.data.previous);
-        } catch (error) {
-          updateLoading(true);
-          console.error(error);
-        } finally {
-          updateLoading(false);
-        }
-      };
-      fetchData();
+      fetchData(
+        `/games?key=675af585f19843d596b1f429b55d94e7&page=${pageValue}`
+      );
     } else {
-      const fetchData = async () => {
-        updateLoading(true);
-        try {
-          const response = await apiClient.get<FetchGamesResponse>("/games");
-          updateGame(response.data.results);
-          updateCount(response.data.count);
-          updateNext(response.data.next);
-          updatePrevious(response.data.previous);
-        } catch (error) {
-          updateLoading(true);
-          console.error(error);
-        } finally {
-          updateLoading(false);
-        }
-      };
-      fetchData();
+      fetchData("/games");
     }
   }, []);
 
@@ -161,6 +149,8 @@ const useGames = () => {
   // Next Games Page
   const handleNextPageGames = async (url: string | null) => {
     if (url) {
+      console.log(url);
+
       var currentURL = window.location.href;
       var match = url.match(/page=(\d+)/);
 
@@ -189,12 +179,16 @@ const useGames = () => {
   // Previous Games Page
   const handlePreviousPageGames = async (url: string | null) => {
     if (url) {
+      // https://api.rawg.io/api/games?genres=51&key=675af585f19843d596b1f429b55d94e7&page=2
       var currentURL = window.location.href;
       var match = url.match(/page=(\d+)/);
 
       if (match !== null) {
         var pageValue = match[1];
         var updatedURL = currentURL.replace(/[?&]page=\d+/, "");
+        const link = new URLSearchParams(url.split("?")[1]); // Extract query parameters from the URL
+        console.log(link.get("pages"), link.get("genres"));
+
         var newURL = updatedURL + "?page=" + pageValue;
         window.location.href = newURL;
       } else {

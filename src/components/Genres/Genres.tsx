@@ -1,15 +1,23 @@
 import useGenres from "../../hooks/useGenres";
 import useGames from "../../hooks/useGames";
 import { useSelectedGenreStore } from "../../store/useSelectedGenre";
-
+import { useNavigate } from "react-router-dom";
 interface Props {
   hideFilter?: (value: boolean) => void;
 }
 
 const Genres = ({ hideFilter }: Props) => {
+  const navigate = useNavigate();
+
   const { genres, loading } = useGenres();
   const { handleGenreSelect } = useGames();
   const { id } = useSelectedGenreStore();
+
+  const navigateToThis = (id: number) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("genres", id.toString());
+    navigate(`${url.pathname}${url.search}`, { replace: true });
+  };
 
   return (
     <>
@@ -31,6 +39,8 @@ const Genres = ({ hideFilter }: Props) => {
                 if (hideFilter) {
                   hideFilter(false);
                 }
+                // navigate()
+                navigateToThis(genre.id);
               }}
               key={genre.id}
               className={`relative grid grid-cols-3 mb-5 cursor-pointer ${
