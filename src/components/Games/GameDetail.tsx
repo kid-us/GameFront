@@ -116,7 +116,7 @@ const GameDetail = () => {
     apiClient.get<GameDetails>(`/games/${id}`).then((res) => {
       setGameDetail(res.data);
       setLoading(false);
-      console.log(res.data);
+      // console.log(res.data);
     });
     apiClient
       .get<ScreenshotResponse>(`/games/${id}/screenshots`)
