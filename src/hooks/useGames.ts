@@ -3,7 +3,7 @@ import apiClient from "../services/apiClient";
 import { useGameStore } from "../store/useGamesStore";
 import { useGameCountStore } from "../store/useGameCountStore";
 import { useSelectedGenreStore } from "../store/useSelectedGenre";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export interface Platform {
   id: number;
@@ -30,7 +30,6 @@ export interface FetchGamesResponse {
 
 const useGames = () => {
   const location = useLocation();
-  const navigate = useNavigate();
 
   const { updateGame, updateLoading, updateNext, updatePrevious } =
     useGameStore();
@@ -189,41 +188,39 @@ const useGames = () => {
   // Previous Games Page
   const handlePreviousPageGames = async (url: string | null) => {
     if (url) {
+      console.log("ul");
+
+      // updateLoading(true);
+
       const urls = new URL(window.location.href);
       // Get the genre parameter from the URL
       var currentURL = window.location.href;
       var match = url.match(/page=(\d+)/);
 
       const genreParam = urls.searchParams.get("genres");
+      const pageParam = urls.searchParams.get("page");
 
+      // Games with Genres
       if (genreParam) {
-        if (match !== null) {
-          const newUrl = `${urls.origin}${urls.pathname}?genres=${genreParam}`;
-          window.location.href = newUrl + `&page=${match[1]}`;
-          updateLoading(true);
+        if (genreParam && pageParam == "2") {
+          window.location.href = `${urls.origin}${urls.pathname}?genres=${genreParam}`;
+        } else {
+          if (match !== null) {
+            const newUrl = `${urls.origin}${urls.pathname}?genres=${genreParam}`;
+            window.location.href = newUrl + `&page=${match[1]}`;
+          }
         }
-      } else if (match !== null) {
-        var pageValue = match[1];
-        var updatedURL = currentURL.replace(/[?&]page=\d+/, "");
-
-        var newURL = updatedURL + "?page=" + pageValue;
-        window.location.href = newURL;
       } else {
-        window.location.href = "/";
-      }
+        // Games without Genres
+        if (match !== null) {
+          var pageValue = match[1];
+          var updatedURL = currentURL.replace(/[?&]page=\d+/, "");
 
-      updateLoading(true);
-      try {
-        const response = await apiClient.get<FetchGamesResponse>(url);
-
-        updateGame(response.data.results);
-        updateNext(response.data.next);
-        updatePrevious(response.data.previous);
-      } catch (error) {
-        updateLoading(true);
-        console.error(error);
-      } finally {
-        updateLoading(false);
+          var newURL = updatedURL + "?page=" + pageValue;
+          window.location.href = newURL;
+        } else {
+          window.location.href = "/";
+        }
       }
     }
   };
