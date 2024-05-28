@@ -47,12 +47,11 @@ const Genres = ({ hideFilter }: Props) => {
               }}
               key={genre.id}
               className={`relative grid grid-cols-3 mb-5 cursor-pointer ${
-                id === genre.id &&
-                "text-teal-600 rounded shadow-sm shadow-teal-700"
+                id === genre.id && "text-teal-600 rounded"
               } ${
                 paramsId != null
                   ? Number(paramsId) === genre.id &&
-                    "text-teal-600 rounded shadow-sm shadow-teal-700"
+                    "text-teal-600 rounded shadow-sm"
                   : ""
               } `}
             >
@@ -61,9 +60,9 @@ const Genres = ({ hideFilter }: Props) => {
                 className="w-10 object-cover h-10 rounded shadow-lg"
               />
               <p className="mt-2 ms-5">{genre.name}</p>
-              {/* <p className=" absolute -top-3 right-2 font-mono p-1 text-teal-600 text-xs">
+              <p className=" absolute -top-3 right-2 font-mono p-1 text-teal-600 text-xs">
                 {genre.games_count}
-              </p> */}
+              </p>
             </div>
           ))}
         </>
