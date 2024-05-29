@@ -8,6 +8,7 @@ import ghost from "./tom.jpg";
 import logo from "./logo.png";
 import footer from "./footer.jpg";
 import photo from "./photo.png";
+import hitman from "./hitman.jpg";
 
 export {
   callofduty,
@@ -19,5 +20,6 @@ export {
   war,
   logo,
   footer,
+  hitman,
   photo,
 };

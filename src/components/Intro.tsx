@@ -124,7 +124,7 @@ const Intro = () => {
                     key={video.id}
                     src={video.cover}
                     alt="Covers"
-                    className={`object-cover rounded shadow-teal-400 shadow-sm cursor-pointer lg:block md:block hidden ${
+                    className={`object-cover rounded shadow-teal-400 shadow-sm cursor-pointer lg:block md:block hidden mb-5 ${
                       intro[0].id === video.id ? "grayscale-0" : "grayscale"
                     } hover:grayscale-0`}
                     onClick={() => changeImage(video.id)}

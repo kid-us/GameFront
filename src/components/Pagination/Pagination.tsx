@@ -28,7 +28,7 @@ const Pagination = ({ next, previous }: Props) => {
       <div>
         <button
           onClick={() => handleNextPageGames(next)}
-          className="bg-zinc-900 rounded-md te py-3 shadow shadow-teal-800 px-10 text-teal-500 font-poppins text-sm"
+          className="bg-zinc-900 rounded-md te py-3 shadow-md shadow-teal-800 px-10 text-sm"
         >
           {previous !== null ? "Next" : "Load More"}
         </button>
