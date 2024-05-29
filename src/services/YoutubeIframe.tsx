@@ -4,6 +4,7 @@ interface IProps {
   videoId: string;
   autoPlay?: boolean;
   title?: string;
+  // muted?: boolean;
 }
 
 const VideoIframe: React.FC<IProps> = (props) => {

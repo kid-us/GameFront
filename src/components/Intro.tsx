@@ -18,22 +18,24 @@ const Intro = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.volume = 0.05;
+    if (!playVideo) {
+      if (videoRef.current) {
+        videoRef.current.volume = 0.05;
+      }
+
+      const changeIntro = () => {
+        setIntro((prevIntro) => {
+          const currentId = prevIntro[0].id;
+          const nextId = currentId !== introItems.length ? currentId + 1 : 1;
+          return introItems.filter((items) => items.id === nextId);
+        });
+      };
+
+      const timer = setTimeout(changeIntro, 8000);
+
+      return () => clearTimeout(timer);
     }
-
-    const changeIntro = () => {
-      setIntro((prevIntro) => {
-        const currentId = prevIntro[0].id;
-        const nextId = currentId !== introItems.length ? currentId + 1 : 1;
-        return introItems.filter((items) => items.id === nextId);
-      });
-    };
-
-    const timer = setTimeout(changeIntro, 5000);
-
-    return () => clearTimeout(timer); // Cleanup the timeout on unmount or before next effect
-  }, [intro]);
+  }, [intro, playVideo]);
 
   const changeImage = (id: number) => {
     setIntro(introItems.filter((items) => items.id === id));
@@ -54,13 +56,6 @@ const Intro = () => {
             <div className="relative col-span-11 w-full">
               {playVideo && (
                 <YoutubeIframe videoId={intro[0].trailer} autoPlay />
-                // <video
-                //   ref={videoRef}
-                //   src={intro[0].trailer}
-                //   className="lg:aspect-video aspect-square sm:aspect-square lg:h-[650px] w-full object-cover shadow-2xl shadow-black rounded-lg"
-                //   muted
-                //   autoPlay
-                // ></video>
               )}
               {!playVideo && (
                 <div className="relative">
