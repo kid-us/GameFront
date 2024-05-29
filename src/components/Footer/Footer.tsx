@@ -1,4 +1,9 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <>
       <footer className="h-auto footer-bg pt-24 pb-14 me-7">
@@ -12,18 +17,39 @@ const Footer = () => {
               <p className="mt-10 text-gray-500 text-sm font-semibold">
                 &copy; 2024 All right reserved
               </p>
-            
+              <p className="text-white mt-5">
+                By :
+                <Link
+                  to={"https://kiduswebsdev.web.app"}
+                  className="text-teal-600 text-sm font-semibold"
+                >
+                  {" "}
+                  Kidus WF
+                </Link>
+              </p>
             </div>
             <div className="col-span-2">
               <div className="flex justify-between">
                 <div className="text-teal-500 text-2xl space-x-10">
-                  <span className="bi-telegram"></span>
-                  <span className="bi-twitter"></span>
-                  <span className="bi-github"></span>
-                  <span className="bi-youtube"></span>
+                  <Link
+                    to={"https://t.me/Kid_uss"}
+                    className="bi-telegram"
+                  ></Link>
+                  <Link
+                    to={"https://twitter.com/kidus_29"}
+                    className="bi-twitter"
+                  ></Link>
+                  <Link
+                    to={"https://github.com/kid-us/"}
+                    className="bi-github"
+                  ></Link>
+                  {/* <Link className="bi-youtube"></Link> */}
                 </div>
-                <div className="text-teal-500 text-2xl space-x-10">
-                  <p className="bi-caret-up-square-fill"></p>
+                <div className="text-white text-2xl space-x-10">
+                  <p
+                    onClick={scrollToTop}
+                    className="bi-caret-up-square-fill cursor-pointer"
+                  ></p>
                 </div>
               </div>
               <div className="mt-10">
