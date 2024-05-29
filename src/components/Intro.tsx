@@ -63,12 +63,12 @@ const Intro = () => {
                 <div className="relative">
                   <img
                     src={intro[0].cover}
-                    className="rounded-lg w-full xl:aspect-auto md:aspect-auto aspect-square object-cover lg:h-[650px]"
+                    className="rounded-lg w-full xl:aspect-auto md:aspect-auto aspect-square object-cover lg:h-[650px] md:h-full h-[400px]"
                     alt="Game Covers"
                   />
                 </div>
               )}
-
+              {/* Intro Typos */}
               <div className="absolute w-full bottom-0 shadow-xl shadow-zinc-950 backdrop-blur-sm backdrop-brightness-50">
                 <div className="lg:p-10 md:p-2 p-4 py-2 bg-highlight">
                   <div className="grid grid-cols-3">
@@ -90,10 +90,10 @@ const Intro = () => {
                         {playVideo ? "Close Trailer" : "Watch Trailer"}
                       </p>
                       <p className="mt-3 text-gray-500">
-                        <span className="bi-microsoft  text-lg"></span>
-                        <span className="bi-apple  mx-3 text-2xl"></span>
-                        <span className="bi-xbox  text-xl"></span>
-                        <span className="bi-playstation  mx-3 text-2xl"></span>
+                        <span className="bi-microsoft lg:text-lg md:text-lg"></span>
+                        <span className="bi-apple mx-3 lg:text-2xl md:text-2xl"></span>
+                        <span className="bi-xbox lg:text-xl md:text-xl"></span>
+                        <span className="bi-playstation mx-3 lg:text-2xl md:text-2xl"></span>
                       </p>
                     </div>
                     <div className="lg:ms-40 lg:mt-0 md:mt-0 mt-10 md:ms-0">
@@ -113,19 +113,32 @@ const Intro = () => {
                 </div>
               </div>
             </div>
+
+            {/* Intro Image Buttons */}
             <div className="lg:mt-5 md:mt-5">
-              <div className="rounded px-1 py-5 lg:block flex  overflow-x-scroll gap-2">
+              {/* Large and  Medium Device*/}
+              <div className="rounded px-1 py-5 lg:block flex  overflow-x-scroll gap-2 ">
                 {videos.map((video) => (
                   <img
                     key={video.id}
                     src={video.cover}
                     alt="Covers"
-                    className={`w-14 h-10 object-cover lg:w-full g:h-full md:w-full md:h-full l rounded shadow-teal-400 shadow-sm cursor-pointer lg:mb-5 md:mb-5 ${
+                    className={`object-cover rounded shadow-teal-400 shadow-sm cursor-pointer lg:block md:block hidden ${
                       intro[0].id === video.id ? "grayscale-0" : "grayscale"
                     } hover:grayscale-0`}
                     onClick={() => changeImage(video.id)}
                   />
                 ))}
+                {/* Small Device */}
+                <div className="lg:hidden md:hidden flex ms-20 ps-2 gap-4">
+                  {videos.map((video) => (
+                    <div
+                      key={video.id}
+                      className="bg-gray-500 p-1 rounded"
+                      onClick={() => changeImage(video.id)}
+                    ></div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
