@@ -1,3 +1,4 @@
+import optimizedImg from "../../services/image-url";
 import { Screenshots } from "../Games/GameDetail";
 
 interface Props {
@@ -11,7 +12,7 @@ export const Screenshot = ({ screenshots }: Props) => {
         {screenshots.map((screenshot) => (
           <div key={screenshot.id}>
             <img
-              src={screenshot.image}
+              src={optimizedImg(screenshot.image)}
               alt="Screenshot"
               className="aspect-square object-cover rounded"
             />
