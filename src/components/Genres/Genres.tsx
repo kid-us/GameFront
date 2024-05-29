@@ -46,7 +46,7 @@ const Genres = ({ hideFilter }: Props) => {
                 navigateToThis(genre.id);
               }}
               key={genre.id}
-              className={`relative grid grid-cols-3 mb-5 cursor-pointer ${
+              className={`grid grid-cols-3 mb-5 cursor-pointer ${
                 id === genre.id && "text-teal-600 rounded"
               } ${
                 paramsId != null
