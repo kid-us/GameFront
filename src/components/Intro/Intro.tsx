@@ -97,7 +97,7 @@ const Intro = () => {
                     <div className="lg:ms-40 lg:mt-0 md:mt-0 mt-10 md:ms-0">
                       <p
                         onClick={() => setPlayVideo(!playVideo)}
-                        className="lg:block md:block hidden text-teal-700 font-semibold font-poppins text-xl mt-2  mb-3 uppercase cursor-pointer"
+                        className="lg:block md:block hidden text-teal-400 font-semibold font-poppins text-xl mt-2  mb-3 uppercase cursor-pointer"
                       >
                         <span
                           className={`${
