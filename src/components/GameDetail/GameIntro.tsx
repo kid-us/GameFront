@@ -1,3 +1,4 @@
+import optimizedImg from "../../services/image-url";
 import { GameDetails } from "../Games/GameDetail";
 import PlatformIcons from "../Games/PlatformIcons";
 import GameGenres from "./GameGenres";
@@ -73,7 +74,7 @@ const Hero = ({ gameDetail }: Props) => {
               {gameDetail.publishers[0].name}
             </p>
             <img
-              src={gameDetail.background_image_additional}
+              src={optimizedImg(gameDetail.background_image_additional)}
               alt="Preview"
               className="rounded mt-8"
             />
