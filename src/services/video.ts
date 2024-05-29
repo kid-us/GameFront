@@ -12,10 +12,11 @@ import {
   callofduty,
   far6,
   forza6,
-  mafia3,
+  // mafia3,
   war,
   ghost,
   gta5,
+  hitman,
 } from "../assets/img";
 
 interface Video {
@@ -34,5 +35,6 @@ export const videos: Video[] = [
   { id: 5, name: "Forza Horizon 7", src: forza, cover: forza6 },
   { id: 6, name: "Call of Duty WII", src: call2, cover: callofduty },
   { id: 7, name: "GTA VI", src: gta, cover: gta5 },
-  { id: 8, name: "Mafia III Revenge", src: mafia, cover: mafia3 },
+  { id: 8, name: "Hitman 3", src: mafia, cover: hitman },
+  // { id: 8, name: "Mafia III Revenge", src: mafia, cover: mafia3 },
 ];
