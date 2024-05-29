@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import introItems from "../services/introItems";
 import { far } from "../assets";
+import YoutubeIframe from "../services/YoutubeIframe";
 
 const Intro = () => {
   const [intro, setIntro] = useState([
     {
       id: 1,
       name: "Far Cry 6",
-      trailer: "https://youtu.be/-IJuKT1mHO8?si=6PiuUzv7yGfsNkbZ",
+      trailer: "ztjfwecrY8E",
+
       cover: far,
     },
   ]);
@@ -51,13 +53,14 @@ const Intro = () => {
           <div className="lg:grid md:grid lg:grid-cols-12 md:grid-cols-12 gap-4">
             <div className="relative col-span-11 w-full">
               {playVideo && (
-                <video
-                  ref={videoRef}
-                  src={intro[0].trailer}
-                  className="lg:aspect-video aspect-square sm:aspect-square lg:h-[650px] w-full object-cover shadow-2xl shadow-black rounded-lg"
-                  muted
-                  autoPlay
-                ></video>
+                <YoutubeIframe videoId={intro[0].trailer} autoPlay />
+                // <video
+                //   ref={videoRef}
+                //   src={intro[0].trailer}
+                //   className="lg:aspect-video aspect-square sm:aspect-square lg:h-[650px] w-full object-cover shadow-2xl shadow-black rounded-lg"
+                //   muted
+                //   autoPlay
+                // ></video>
               )}
               {!playVideo && (
                 <div className="relative">

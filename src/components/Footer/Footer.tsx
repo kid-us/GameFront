@@ -6,7 +6,7 @@ const Footer = () => {
   };
   return (
     <>
-      <footer className="h-auto footer-bg lg:pt-24 pt-10 pb-14 lg:me-7 lg:p-0 md:p-0 p-5">
+      <footer className="h-auto footer-bg lg:pt-24 lg:pb-14 pt-10 lg:me-7 lg:p-0 md:p-0 p-5">
         <div className="container mx-auto ">
           <div className="lg:grid grid-cols-3">
             <div>
