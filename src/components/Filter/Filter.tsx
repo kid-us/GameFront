@@ -55,14 +55,12 @@ const Filter = () => {
             <div className="animate__animated animate__fadeIn absolute h-[85vh] games-bg z-10 w-[70%] -right-2 top-0 rounded pt-5">
               <p
                 onClick={() => setFilter(false)}
-                className="absolute -top-3 rounded-full bg-teal-50 h-6 w-6 -left-4 text-center text-black font-bold mt-1 bi-arrow-right"
+                className="absolute -top-1 rounded-full bg-white h-6 w-6 -left-1 text-center text-black font-bold mt-1 bi-arrow-right"
               ></p>
 
               <div className="px-6">
-                <p className="shadow-xl shadow-zinc-800 py-2 px-5 rounded-md cursor-pointer mb-7 text-sm">
-                  <span className="text-xl"></span>
-                  Filter By :<span className="text-teal-500 ms-2">Years </span>
-                  <span className="bi-caret-down-fill text-xs text-teal-500"></span>
+                <p className="shadow shadow-zinc-800 py-3 text-center rounded-md cursor-pointer mb-7 text-sm">
+                  Filter By Genres
                 </p>
                 <div className="overflow-scroll h-[70vh]">
                   <Genres hideFilter={(value) => setFilter(value)} />

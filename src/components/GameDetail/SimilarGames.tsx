@@ -1,5 +1,6 @@
 import { Similar } from "../Games/GameDetail";
 import { photo } from "../../assets/img";
+import optimizedImg from "../../services/image-url";
 
 interface Props {
   name: string;
@@ -17,12 +18,15 @@ const SimilarGames = ({ name, similarGame }: Props) => {
         {similarGame.map((similar) => (
           <div
             onClick={() => (window.location.href = `/${similar.id}`)}
-            // to={`/${similar.id}`}
             key={similar.id}
             className="hover:-translate-y-2 duration-500 cursor-pointer"
           >
             <img
-              src={similar.background_image ? similar.background_image : photo}
+              src={
+                similar.background_image
+                  ? optimizedImg(similar.background_image)
+                  : photo
+              }
               alt="Similar Games"
               className="aspect-square object-cover rounded"
             />
