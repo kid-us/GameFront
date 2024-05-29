@@ -20,7 +20,7 @@ const Pagination = ({ next, previous }: Props) => {
             onClick={() => handlePreviousPageGames(previous)}
             className="bg-zinc-900 rounded-md te py-3 shadow shadow-teal-800 px-10 text-teal-500 font-poppins text-sm"
           >
-            Previous
+            Prev
           </button>
         </div>
       )}
