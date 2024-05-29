@@ -12,6 +12,7 @@ const Intro = () => {
       cover: far6,
     },
   ]);
+
   const [playVideo, setPlayVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -21,16 +22,16 @@ const Intro = () => {
     }
 
     const changeIntro = () => {
-      if (intro[0].id !== 8) {
-        const currentId = intro[0].id;
-        const nextId = currentId + 1;
-        setIntro(videos.filter((video) => video.id === nextId));
-      } else {
-        setIntro(videos.filter((video) => video.id === 1));
-      }
+      setIntro((prevIntro) => {
+        const currentId = prevIntro[0].id;
+        const nextId = currentId !== videos.length ? currentId + 1 : 1;
+        return videos.filter((video) => video.id === nextId);
+      });
     };
 
-    setTimeout(changeIntro, 5000);
+    const timer = setTimeout(changeIntro, 5000);
+
+    return () => clearTimeout(timer); // Cleanup the timeout on unmount or before next effect
   }, [intro]);
 
   const changeImage = (id: number) => {
@@ -134,7 +135,9 @@ const Intro = () => {
                   {videos.map((video) => (
                     <div
                       key={video.id}
-                      className="bg-gray-500 p-1 rounded"
+                      className={`${
+                        intro[0].id === video.id ? "bg-white" : "bg-gray-500"
+                      } p-1 rounded`}
                       onClick={() => changeImage(video.id)}
                     ></div>
                   ))}
