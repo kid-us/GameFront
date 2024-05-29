@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PlatformIcons from "./PlatformIcons";
 import { useGameStore } from "../../store/useGamesStore";
-import { photo } from "../../assets/img";
+import { photo } from "../../assets";
 import Pagination from "../Pagination/Pagination";
 import optimizedImg from "../../services/image-url";
 

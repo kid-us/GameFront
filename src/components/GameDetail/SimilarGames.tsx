@@ -1,5 +1,5 @@
 import { Similar } from "../Games/GameDetail";
-import { photo } from "../../assets/img";
+import { photo } from "../../assets";
 import optimizedImg from "../../services/image-url";
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 
 const SimilarGames = ({ name, similarGame }: Props) => {
   return (
-    <div>
+    <div className="mb-10">
       <p className="text-lg my-10 font-poppins text-gray-400 lg:px-0 px-3">
         Games like <span className="text-teal-400 font-poppins">{name}</span>
       </p>

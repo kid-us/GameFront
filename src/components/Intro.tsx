@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { videos } from "../services/video";
-import { farcry } from "../assets/video";
-import { far6 } from "../assets/img";
+import introItems from "../services/introItems";
+import { far } from "../assets";
 
 const Intro = () => {
   const [intro, setIntro] = useState([
     {
       id: 1,
       name: "Far Cry 6",
-      src: farcry,
-      cover: far6,
+      trailer: "https://youtu.be/-IJuKT1mHO8?si=6PiuUzv7yGfsNkbZ",
+      cover: far,
     },
   ]);
 
@@ -24,8 +23,8 @@ const Intro = () => {
     const changeIntro = () => {
       setIntro((prevIntro) => {
         const currentId = prevIntro[0].id;
-        const nextId = currentId !== videos.length ? currentId + 1 : 1;
-        return videos.filter((video) => video.id === nextId);
+        const nextId = currentId !== introItems.length ? currentId + 1 : 1;
+        return introItems.filter((items) => items.id === nextId);
       });
     };
 
@@ -35,7 +34,7 @@ const Intro = () => {
   }, [intro]);
 
   const changeImage = (id: number) => {
-    setIntro(videos.filter((video) => video.id === id));
+    setIntro(introItems.filter((items) => items.id === id));
   };
 
   return (
@@ -54,7 +53,7 @@ const Intro = () => {
               {playVideo && (
                 <video
                   ref={videoRef}
-                  src={intro[0].src}
+                  src={intro[0].trailer}
                   className="lg:aspect-video aspect-square sm:aspect-square lg:h-[650px] w-full object-cover shadow-2xl shadow-black rounded-lg"
                   muted
                   autoPlay
@@ -119,26 +118,26 @@ const Intro = () => {
             <div className="lg:mt-5 md:mt-5">
               {/* Large and  Medium Device*/}
               <div className="rounded px-1 py-5 lg:block flex  overflow-x-scroll gap-2 ">
-                {videos.map((video) => (
+                {introItems.map((items) => (
                   <img
-                    key={video.id}
-                    src={video.cover}
+                    key={items.id}
+                    src={items.cover}
                     alt="Covers"
                     className={`object-cover rounded shadow-teal-400 shadow-sm cursor-pointer lg:block md:block hidden mb-5 ${
-                      intro[0].id === video.id ? "grayscale-0" : "grayscale"
+                      intro[0].id === items.id ? "grayscale-0" : "grayscale"
                     } hover:grayscale-0`}
-                    onClick={() => changeImage(video.id)}
+                    onClick={() => changeImage(items.id)}
                   />
                 ))}
                 {/* Small Device */}
                 <div className="lg:hidden md:hidden flex ms-20 ps-2 gap-4">
-                  {videos.map((video) => (
+                  {introItems.map((items) => (
                     <div
-                      key={video.id}
+                      key={items.id}
                       className={`${
-                        intro[0].id === video.id ? "bg-white" : "bg-gray-500"
+                        intro[0].id === items.id ? "bg-white" : "bg-gray-500"
                       } p-1 rounded`}
-                      onClick={() => changeImage(video.id)}
+                      onClick={() => changeImage(items.id)}
                     ></div>
                   ))}
                 </div>

@@ -6,27 +6,29 @@ const Footer = () => {
   };
   return (
     <>
-      <footer className="h-auto footer-bg pt-24 pb-14 me-7">
+      <footer className="h-auto footer-bg lg:pt-24 pt-10 pb-14 lg:me-7 lg:p-0 md:p-0 p-5">
         <div className="container mx-auto ">
-          <div className="grid grid-cols-3">
+          <div className="lg:grid grid-cols-3">
             <div>
-              <p className="space-x-10 text-white text-xl font-poppins">
+              <p className="space-x-10 text-white text-xl font-poppins lg:mb-0 mb-10">
                 <span className="bi-controller me-4"></span>
                 GameFront
               </p>
-              <p className="mt-10 text-gray-500 text-sm font-semibold">
-                &copy; 2024 All right reserved
-              </p>
-              <p className="text-white mt-5">
-                By :
-                <Link
-                  to={"https://kiduswebsdev.web.app"}
-                  className="text-teal-600 text-sm font-semibold"
-                >
-                  {" "}
-                  Kidus WF
-                </Link>
-              </p>
+              <div className="lg:block md:block hidden">
+                <p className="mt-10 text-gray-500 text-sm font-semibold">
+                  &copy; 2024 All right reserved
+                </p>
+                <p className="text-white mt-5">
+                  By :
+                  <Link
+                    to={"https://kiduswebsdev.web.app"}
+                    className="text-teal-600 text-sm font-semibold"
+                  >
+                    {" "}
+                    Kidus WF
+                  </Link>
+                </p>
+              </div>
             </div>
             <div className="col-span-2">
               <div className="flex justify-between">
@@ -64,6 +66,21 @@ const Footer = () => {
                   This site does not store any files on our server, we only
                   linked to the media which is hosted on 3rd party services.
                 </p>
+                <div className="lg:hidden md:hidden">
+                  <p className="mt-10 text-gray-500 text-sm font-semibold">
+                    &copy; 2024 All right reserved
+                  </p>
+                  <p className="text-white mt-5">
+                    By :
+                    <Link
+                      to={"https://kiduswebsdev.web.app"}
+                      className="text-teal-600 text-sm font-semibold"
+                    >
+                      {" "}
+                      Kidus WF
+                    </Link>
+                  </p>
+                </div>
               </div>
             </div>
           </div>

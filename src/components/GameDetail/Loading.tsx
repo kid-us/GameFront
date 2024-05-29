@@ -1,4 +1,4 @@
-import { photo } from "../../assets/img";
+import { photo } from "../../assets";
 
 const Loading = () => {
   return (

@@ -11,6 +11,7 @@ import Stores from "../GameDetail/Stores";
 import Developer from "../GameDetail/Developer";
 import SimilarGames from "../GameDetail/SimilarGames";
 import Loading from "../GameDetail/Loading";
+import Footer from "../Footer/Footer";
 
 // Game Info
 interface Store {
@@ -151,7 +152,7 @@ const GameDetail = () => {
                     <Stores store={gameDetail} />
                   </div>
                 </div>
-                
+
                 {/* Screenshot */}
                 {screenshot && <Screenshot screenshots={screenshot} />}
 
@@ -179,6 +180,8 @@ const GameDetail = () => {
                   similarGame={similarGames}
                 />
               </div>
+              {/* Footer */}
+              <Footer />
             </div>
           )}
         </>
