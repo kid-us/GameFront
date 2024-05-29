@@ -37,13 +37,13 @@ const Hero = ({ gameDetail }: Props) => {
       }}
     >
       <div className="lg:container lg:mx-auto text-white ">
-        <h1 className="text-white lg:text-xl text-xl mb-6 mx-2">
+        <h1 className="text-white lg:text-xl text-xl mb-6 mx-5">
           {gameDetail.name}
         </h1>
 
         {/* Info */}
         <div className="lg:flex lg:gap-5 justify-between">
-          <div className="lg:w-[80%] lg:mx-0 mx-2">
+          <div className="lg:w-[80%] lg:mx-0 mx-5">
             <img
               src={gameDetail.background_image}
               alt="Game"
