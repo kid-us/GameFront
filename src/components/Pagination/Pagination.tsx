@@ -1,4 +1,4 @@
-import useGames from "../hooks/useGames";
+import useGames from "../../hooks/useGames";
 
 interface Props {
   next: string | null;
