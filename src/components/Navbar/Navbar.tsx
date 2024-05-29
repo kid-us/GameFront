@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Search from "../Search/Search";
+import { logo } from "../../assets";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -34,12 +35,8 @@ const Navbar = () => {
         >
           <div className="flex justify-start gap-28">
             <div>
-              <Link
-                to="/"
-                className="text-white font-poppins bi-controller text-lg"
-              >
-                {" "}
-                <span className="mx-1"></span> GameFront
+              <Link to="/" className="flex text-white font-poppins text-lg">
+                <img src={logo} className="w-11 me-4"></img> GameFront
               </Link>
             </div>
           </div>

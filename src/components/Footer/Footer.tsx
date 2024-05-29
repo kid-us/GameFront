@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { logo } from "../../assets";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -10,10 +11,12 @@ const Footer = () => {
         <div className="container mx-auto ">
           <div className="lg:grid grid-cols-3">
             <div>
-              <p className="space-x-10 text-white text-xl font-poppins lg:mb-0 mb-10">
-                <span className="bi-controller me-4"></span>
-                GameFront
-              </p>
+              <div className="flex lg:mb-0 mb-10">
+                <img src={logo} className="w-16"></img>
+                <span className="text-white text-xl font-poppins ps-4 pt-2">
+                  GameFront
+                </span>
+              </div>
               <div className="lg:block md:block hidden">
                 <p className="mt-10 text-gray-500 text-sm font-semibold">
                   &copy; 2024 All right reserved
