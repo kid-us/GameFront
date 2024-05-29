@@ -15,7 +15,7 @@ const Search = () => {
     const searchParams = new URLSearchParams(location.search).get("search");
     setSearchedGame(searchParams);
     if (searchParams) {
-      document.title = searchParams;
+      document.title = "GameFront | " + searchParams;
     }
   }, [location]);
 

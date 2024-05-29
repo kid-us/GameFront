@@ -40,10 +40,6 @@ const useGames = () => {
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
 
-    // Get the current URL
-    // var currentURL = window.location.href;
-    // var match = currentURL.match(/[?&]page=(\d+)/);
-
     const fetchData = async (url: string) => {
       updateLoading(true);
       try {
@@ -153,20 +149,6 @@ const useGames = () => {
   const handleSearch = async (keyword: string) => {
     updateLoading(true);
     window.location.href = `/?search=${keyword}`;
-    try {
-      const response = await apiClient.get<FetchGamesResponse>(
-        `/games?search=${keyword}`
-      );
-      updateGame(response.data.results);
-      updateCount(response.data.count);
-      updateNext(response.data.next);
-      updatePrevious(response.data.previous);
-    } catch (error) {
-      updateLoading(true);
-      console.error(error);
-    } finally {
-      updateLoading(false);
-    }
   };
 
   // Next Games Page
