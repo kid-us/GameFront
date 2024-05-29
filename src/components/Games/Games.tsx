@@ -91,7 +91,9 @@ const Games = () => {
           </>
         ) : (
           <div className="mt-10">
-            <p className="text-2xl">Video Game does not exist!</p>
+            <p className="text-2xl text-center text-red-500">
+              Video Game does not exist!
+            </p>
           </div>
         )}
       </div>
