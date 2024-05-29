@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import introItems from "../services/introItems";
-import { far } from "../assets";
-import YoutubeIframe from "../services/YoutubeIframe";
+import introItems from "../../services/introItems";
+import { far } from "../../assets";
+import YoutubeIframe from "../../services/YoutubeIframe";
 
 const Intro = () => {
   const [intro, setIntro] = useState([

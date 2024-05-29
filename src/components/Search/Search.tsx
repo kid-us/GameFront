@@ -14,6 +14,9 @@ const Search = () => {
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search).get("search");
     setSearchedGame(searchParams);
+    if (searchParams) {
+      document.title = searchParams;
+    }
   }, [location]);
 
   return (
