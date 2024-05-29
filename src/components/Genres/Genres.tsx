@@ -2,6 +2,8 @@ import useGenres from "../../hooks/useGenres";
 import useGames from "../../hooks/useGames";
 import { useSelectedGenreStore } from "../../store/useSelectedGenre";
 import { useNavigate, useLocation } from "react-router-dom";
+import optimizedImg from "../../services/image-url";
+
 interface Props {
   hideFilter?: (value: boolean) => void;
 }
@@ -56,7 +58,7 @@ const Genres = ({ hideFilter }: Props) => {
               } `}
             >
               <img
-                src={genre.image_background}
+                src={optimizedImg(genre.image_background)}
                 className="w-10 object-cover h-10 rounded shadow-lg"
               />
               <p className="mt-2 ms-5">{genre.name}</p>
