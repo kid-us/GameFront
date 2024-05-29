@@ -68,6 +68,7 @@ const Intro = () => {
                   />
                 </div>
               )}
+
               <div className="absolute w-full bottom-0 shadow-xl shadow-zinc-950 backdrop-blur-sm backdrop-brightness-50">
                 <div className="lg:p-10 md:p-2 p-4 py-2 bg-highlight">
                   <div className="grid grid-cols-3">
