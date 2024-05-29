@@ -7,5 +7,6 @@ import ghost from "./tom.jpg";
 import photo from "./photo.png";
 import hitman from "./hitman.jpg";
 import fifa from "./fifa.jpg";
+import logo from "./logo.png";
 
-export { call, far, forza, ghost, gta, war, hitman, photo, fifa };
+export { call, far, forza, ghost, gta, war, hitman, photo, fifa, logo };
