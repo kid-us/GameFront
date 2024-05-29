@@ -30,7 +30,7 @@ const Games = () => {
               </div>
             </div>
           ))
-        ) : (
+        ) : game.length > 0 ? (
           <>
             {game.map((game) => (
               <Link
@@ -89,6 +89,10 @@ const Games = () => {
               </Link>
             ))}
           </>
+        ) : (
+          <div className="mt-10">
+            <p className="text-2xl">Video Game does not exist!</p>
+          </div>
         )}
       </div>
 
