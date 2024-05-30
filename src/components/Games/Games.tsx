@@ -57,13 +57,13 @@ const Games = () => {
                   </div>
                   <div className="pt-2 px-2 pb-2 bg2 text-white rounded-b">
                     <div className="flex justify-between">
-                      <h6 className="mb-2 text-nowrap w-52 overflow-hidden lg:text-lg md:text-lg text-sm">
+                      <h6 className="mb-2 text-nowrap w-52 overflow-hidden lg:text-[16px] md:text-[16px] text-sm">
                         {game.name}
                       </h6>
                     </div>
                     <div className="grid grid-cols-4">
                       <div className="col-span-3 text-xs w-2/3 overflow-hidden">
-                        <p className="text-xs font-poppins text-gray-600">
+                        <p className="text-xs md:text-xs text-[8.5px] font-poppins text-gray-400">
                           Platforms
                         </p>
                         <div className="flex space-x-2 mt-2">
@@ -76,7 +76,7 @@ const Games = () => {
                       </div>
 
                       <div className="lg:text-xs md:text-xs">
-                        <p className="font-poppins text-gray-600 text-nowrap overflow-hidden text-[8.5px]">
+                        <p className="font-poppins text-gray-400 text-nowrap overflow-hidden lg:text-xs md:text-xs text-[8.5px]">
                           Play Time
                         </p>
                         <p className="text-center font-mono mt-2 text-xs">
