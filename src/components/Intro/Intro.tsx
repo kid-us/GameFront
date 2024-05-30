@@ -55,7 +55,19 @@ const Intro = () => {
           <div className="lg:grid md:grid lg:grid-cols-12 md:grid-cols-12 gap-4">
             <div className="relative col-span-11 w-full">
               {playVideo && (
-                <YoutubeIframe videoId={intro[0].trailer} autoPlay />
+                <div className="relative">
+                  <YoutubeIframe videoId={intro[0].trailer} autoPlay />
+                  <div
+                    className="absolute -top-3 -left-3
+                  "
+                  >
+                    {/* Video Close */}
+                    <p
+                      onClick={() => setPlayVideo(false)}
+                      className="bi-x-lg text-white bg-teal-800 px-2 py-1 rounded z-50"
+                    ></p>
+                  </div>
+                </div>
               )}
               {!playVideo && (
                 <div className="relative">
@@ -74,19 +86,17 @@ const Intro = () => {
                       <h1 className="lg:text-4xl md:text-3xl text-lg font-bold text-white">
                         {intro[0].name}
                       </h1>
-                      <p
-                        onClick={() => setPlayVideo(!playVideo)}
-                        className="lg:hidden md:hidden sm:block text-teal-500 font-semibold font-poppins text-lg mt-2  mb-3 uppercase cursor-pointer"
-                      >
-                        <span
-                          className={`${
-                            playVideo
-                              ? "bi-x-lg"
-                              : "bi-play-circle-fill md:text-xl text-md"
-                          } lg:text-2xl md:text-xl text-md me-2`}
-                        ></span>
-                        {playVideo ? "Close Trailer" : "Watch Trailer"}
-                      </p>
+                      {!playVideo && (
+                        <p
+                          onClick={() => setPlayVideo(!playVideo)}
+                          className="lg:hidden md:hidden sm:block text-teal-500 font-semibold font-poppins text-lg mt-2  mb-3 uppercase cursor-pointer"
+                        >
+                          <span
+                            className={`bi-play-circle-fill lg:text-2xl md:text-xl text-md me-2`}
+                          ></span>
+                          Watch Trailer
+                        </p>
+                      )}
                       <p className="mt-3 text-gray-500">
                         <span className="bi-microsoft lg:text-lg md:text-lg"></span>
                         <span className="bi-apple mx-3 lg:text-2xl md:text-2xl"></span>
@@ -95,17 +105,17 @@ const Intro = () => {
                       </p>
                     </div>
                     <div className="lg:ms-40 lg:mt-0 md:mt-0 mt-10 md:ms-0">
-                      <p
-                        onClick={() => setPlayVideo(!playVideo)}
-                        className="lg:block md:block hidden text-teal-400 font-semibold font-poppins text-xl mt-2  mb-3 uppercase cursor-pointer"
-                      >
-                        <span
-                          className={`${
-                            playVideo ? "bi-x-lg" : "bi-play-circle-fill"
-                          } text-2xl me-5`}
-                        ></span>
-                        {playVideo ? "Close Trailer" : "Watch Trailer"}
-                      </p>
+                      {!playVideo && (
+                        <p
+                          onClick={() => setPlayVideo(true)}
+                          className="lg:block md:block hidden text-teal-400 font-semibold font-poppins text-xl mt-2  mb-3 uppercase cursor-pointer"
+                        >
+                          <span
+                            className={`bi-play-circle-fill text-2xl me-5`}
+                          ></span>
+                          Watch Trailer
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
