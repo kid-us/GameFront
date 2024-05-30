@@ -60,7 +60,8 @@ const Filter = () => {
 
               <div className="px-6">
                 <p className="shadow shadow-zinc-800 py-3 text-center rounded-md cursor-pointer mb-7 text-sm">
-                  Filter By Genres
+                  <span className="text-lg bi-filter-left"></span>
+                  &nbsp; Filter By Genres
                 </p>
                 <div className="overflow-scroll h-[70vh]">
                   <Genres hideFilter={(value) => setFilter(value)} />
