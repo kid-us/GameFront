@@ -64,7 +64,7 @@ const Intro = () => {
                     {/* Video Close */}
                     <span
                       onClick={() => setPlayVideo(false)}
-                      className="bi-x-lg text-white bg-red-500 px-2 py-1 rounded z-50 cursor-pointer"
+                      className="bi-x-lg text-white bg-red-900 px-2 py-1 rounded z-50 cursor-pointer"
                     ></span>
                   </div>
                 </div>
