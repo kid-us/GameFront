@@ -63,7 +63,7 @@ const Games = () => {
                     </div>
                     <div className="grid grid-cols-4">
                       <div className="col-span-3 text-xs w-2/3 overflow-hidden">
-                        <p className="text-xs md:text-xs text-[8.5px] font-poppins text-gray-400">
+                        <p className="lg:text-xs md:text-xs text-[10px] font-poppins text-gray-400">
                           Platforms
                         </p>
                         <div className="flex space-x-2 mt-2">
@@ -76,10 +76,10 @@ const Games = () => {
                       </div>
 
                       <div className="lg:text-xs md:text-xs">
-                        <p className="font-poppins text-gray-400 text-nowrap overflow-hidden lg:text-xs md:text-xs text-[8.5px]">
+                        <p className="font-poppins text-gray-400 text-nowrap overflow-hidden lg:text-xs md:text-xs text-[10px]">
                           Play Time
                         </p>
-                        <p className="text-center font-mono mt-2 text-xs">
+                        <p className="text-center font-mono mt-2 lg:text-xs md:text-xs text-[10px]">
                           {game.playtime} hr
                         </p>
                       </div>
