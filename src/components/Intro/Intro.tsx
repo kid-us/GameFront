@@ -58,14 +58,14 @@ const Intro = () => {
                 <div className="relative">
                   <YoutubeIframe videoId={intro[0].trailer} autoPlay />
                   <div
-                    className="absolute -top-3 -left-3
+                    className="absolute lg:-top-5 lg:-left-5 top-0 right-0
                   "
                   >
                     {/* Video Close */}
-                    <p
+                    <span
                       onClick={() => setPlayVideo(false)}
-                      className="bi-x-lg text-white bg-teal-800 px-2 py-1 rounded z-50"
-                    ></p>
+                      className="bi-x-lg text-white bg-red-500 px-2 py-1 rounded z-50 cursor-pointer"
+                    ></span>
                   </div>
                 </div>
               )}
