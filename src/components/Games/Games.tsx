@@ -76,8 +76,8 @@ const Games = () => {
                       </div>
 
                       <div className="lg:text-xs md:text-xs">
-                        <p className="font-poppins text-gray-400 text-nowrap overflow-hidden lg:text-xs md:text-xs text-[10px]">
-                          Play Time
+                        <p className="font-poppins text-gray-400 text-nowrap overflow-hidden lg:text-xs md:text-xs text-[10px] bi-play-circle-fill">
+                          &nbsp; Time
                         </p>
                         <p className="text-center font-mono mt-2 lg:text-xs md:text-xs text-[10px]">
                           {game.playtime} hr
