@@ -8,7 +8,7 @@ const Intro = () => {
     {
       id: 1,
       name: "Far Cry 6",
-      trailer: "ztjfwecrY8E",
+      trailer: "DFze21M_O6s",
 
       cover: far,
     },
