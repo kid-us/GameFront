@@ -31,7 +31,7 @@ const Intro = () => {
         });
       };
 
-      const timer = setTimeout(changeIntro, 18000);
+      const timer = setTimeout(changeIntro, 10000);
 
       return () => clearTimeout(timer);
     }
