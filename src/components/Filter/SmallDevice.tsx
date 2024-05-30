@@ -1,37 +1,15 @@
-import { useState } from "react";
 import Genres from "../Genres/Genres";
-import { useGameCountStore } from "../../store/useGameCountStore";
-import PlatformSelector from "./PlatformSelector";
-import OrderBy from "./OrderBy";
-import Search from "../Search/Search";
-import SmallDevice from "./SmallDevice";
 
-const Filter = () => {
-  const [filter, setFilter] = useState(false);
-  const { count } = useGameCountStore();
+interface Props {
+  filter: boolean;
+  count: number | null;
+  setFilter: (value: boolean) => void;
+}
+
+const SmallDevice = ({ filter, count, setFilter }: Props) => {
   return (
     <>
-      {/* Large device Filter*/}
-      <div className="lg:block md:block hidden rounded pr-4 py-3 text-white mt-5 mb-9">
-        <div className="flex justify-between gap-10">
-          <div className="grid grid-cols-2">
-            <PlatformSelector />
-            <OrderBy />
-          </div>
-
-          <div className="w-72 relative">
-            <Search />
-          </div>
-        </div>
-      </div>
-
-      {/* Small Device  Genres*/}
-      <SmallDevice
-        filter={filter}
-        count={count}
-        setFilter={() => setFilter(!filter)}
-      />
-      {/* <div
+      <div
         className={`flex relative justify-between mb-8 lg:hidden mt-5
           ${filter && "sticky top-24 z-50"}
           `}
@@ -76,9 +54,9 @@ const Filter = () => {
             </div>
           </>
         )}
-      </div> */}
+      </div>
     </>
   );
 };
 
-export default Filter;
+export default SmallDevice;
