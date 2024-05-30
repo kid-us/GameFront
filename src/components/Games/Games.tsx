@@ -38,7 +38,7 @@ const Games = () => {
                 key={game.id}
                 to={`/${game.id}`}
               >
-                <div className="shadow-xl mb-">
+                <div className="shadow-xl">
                   <div className="relative">
                     <img
                       src={
