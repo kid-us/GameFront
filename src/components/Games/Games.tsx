@@ -57,7 +57,7 @@ const Games = () => {
                   </div>
                   <div className="pt-2 px-2 pb-2 bg2 text-white rounded-b">
                     <div className="flex justify-between">
-                      <h6 className="mb-2 text-nowrap w-52 overflow-hidden">
+                      <h6 className="mb-2 text-nowrap w-52 overflow-hidden lg:text-lg md:text-lg text-sm">
                         {game.name}
                       </h6>
                     </div>
