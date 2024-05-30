@@ -31,7 +31,7 @@ const Intro = () => {
         });
       };
 
-      const timer = setTimeout(changeIntro, 8000);
+      const timer = setTimeout(changeIntro, 18000);
 
       return () => clearTimeout(timer);
     }
@@ -81,7 +81,7 @@ const Intro = () => {
               {/* Intro Typos */}
               <div className="absolute w-full bottom-0 shadow-xl shadow-zinc-950 backdrop-blur-sm backdrop-brightness-50">
                 <div className="lg:p-10 md:p-2 p-4 py-2 bg-highlight">
-                  <div className="grid grid-cols-3">
+                  <div className="lg:grid lg:grid-cols-3 md:grid md:grid-cols-3">
                     <div className="col-span-2">
                       <h1 className="lg:text-4xl md:text-3xl text-lg font-bold text-white">
                         {intro[0].name}
