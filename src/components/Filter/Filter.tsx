@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Genres from "../Genres/Genres";
 import { useGameCountStore } from "../../store/useGameCountStore";
 import PlatformSelector from "./PlatformSelector";
 import OrderBy from "./OrderBy";
