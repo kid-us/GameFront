@@ -24,10 +24,10 @@ This site does not store any files on our server, we only linked to the media wh
 <h2>Tech Stack</h2>
 <p>kid-us/GameFront is built on the following main stack:</p>
 <p><b>#Tailwind CSS</b></p>
-<p>#React Javascript UI Libraries</p> 
-<p>#CSS</p> 
-<p>   #Typescript</p>
-<p>#Axios</p>
+<p><b>#React</b></p> 
+<p><b>#CSS</b></p> 
+<p><b>#Typescript</b></p>
+<p><b>#Axios</b></p>
 
 <h2> Installation </h2>
 <p>1: Clone the repository</p>
