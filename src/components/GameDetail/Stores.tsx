@@ -1,4 +1,4 @@
-import { GameDetails } from "../Games/GameDetail";
+import { GameDetails } from "../../services/gameDetail";
 interface Props {
   store: GameDetails;
 }
