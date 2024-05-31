@@ -19,7 +19,7 @@ This site does not store any files on our server, we only linked to the media wh
 
 <h2>UI Screenshot</h2>
 <p>Here's a glimpse of the user interface:</p>
-<img src="https://github.com/kid-us/Vidly/blob/main/ui.png" width="100%">
+<img src="https://github.com/kid-us/GameFront/blob/main/ui.png" width="100%">
 
 <h2>Tech Stack</h2>
 <p>kid-us/Vidly is built on the following main stack:</p>
