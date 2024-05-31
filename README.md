@@ -26,7 +26,7 @@ This site does not store any files on our server, we only linked to the media wh
 <p>#Tailwind CSS</p>
 <p>#React Javascript UI Libraries</p> 
 <p>#CSS</p> 
-<p>#Typescript</p>
+<p> <a href="https://www.flaticon.com/free-icons/typescript" title="typescript icons">Typescript</a> #Typescript</p>
 <p>#Axios</p>
 
 <h2> Installation </h2>
