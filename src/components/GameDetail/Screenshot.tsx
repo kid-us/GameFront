@@ -1,5 +1,5 @@
 import optimizedImg from "../../services/image-url";
-import { Screenshots } from "../Games/GameDetail";
+import { Screenshots } from "../../services/gameDetail";
 
 interface Props {
   screenshots: Screenshots[];
