@@ -1,6 +1,6 @@
-import { Similar } from "../Games/GameDetail";
 import { photo } from "../../assets";
 import optimizedImg from "../../services/image-url";
+import { Similar } from "../../services/gameDetail";
 
 interface Props {
   name: string;
