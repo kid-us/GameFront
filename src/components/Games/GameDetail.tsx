@@ -12,6 +12,7 @@ import Developer from "../GameDetail/Developer";
 import SimilarGames from "../GameDetail/SimilarGames";
 import Loading from "../GameDetail/Loading";
 import Footer from "../Footer/Footer";
+
 import {
   GameDetails,
   ScreenshotResponse,
@@ -23,17 +24,22 @@ import {
 const GameDetail = () => {
   const { id } = useParams();
 
+  console.log(id);
+
   const [gameDetail, setGameDetail] = useState<GameDetails>();
   const [screenshot, setScreenshot] = useState<Screenshots[]>([]);
   const [similarGames, setSimilarGames] = useState<Similar[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    apiClient.get<GameDetails>(`/games/${id}`).then((res) => {
-      setGameDetail(res.data);
-      setLoading(false);
-      document.title = res.data.name;
-    });
+    apiClient
+      .get<GameDetails>(`/games/${id}`)
+      .then((res) => {
+        setGameDetail(res.data);
+        setLoading(false);
+        document.title = res.data.name;
+      })
+      .catch(() => (window.location.href = "/404"));
     apiClient
       .get<ScreenshotResponse>(`/games/${id}/screenshots`)
       .then((res) => {
