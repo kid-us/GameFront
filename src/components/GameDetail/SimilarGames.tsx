@@ -14,7 +14,7 @@ const SimilarGames = ({ name, similarGame }: Props) => {
         Games like <span className="text-teal-400 font-poppins">{name}</span>
       </p>
 
-      <div className="grid lg:grid-cols-5 grid-cols-4 gap-4 lg:px-0 px-3">
+      <div className="grid lg:grid-cols-5 grid-cols-3 gap-4 lg:px-0 px-3">
         {similarGame.map((similar) => (
           <div
             onClick={() => (window.location.href = `/${similar.id}`)}
