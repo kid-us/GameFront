@@ -1,4 +1,4 @@
-import { Developers } from "../Games/GameDetail";
+import { Developers } from "../../services/gameDetail";
 
 interface Props {
   devs: Developers[];
