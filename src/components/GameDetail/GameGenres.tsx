@@ -1,4 +1,4 @@
-import { GameGenres } from "../Games/GameDetail";
+import { GameGenres } from "../../services/gameDetail";
 
 interface Props {
   genres: GameGenres[];
