@@ -22,11 +22,11 @@ This site does not store any files on our server, we only linked to the media wh
 <img src="https://github.com/kid-us/GameFront/blob/main/ui.png" width="100%">
 
 <h2>Tech Stack</h2>
-<p>kid-us/Vidly is built on the following main stack:</p>
-<p>#Tailwind CSS</p>
+<p>kid-us/GameFront is built on the following main stack:</p>
+<p><b>#Tailwind CSS</b></p>
 <p>#React Javascript UI Libraries</p> 
 <p>#CSS</p> 
-<p> <a href="https://www.flaticon.com/free-icons/typescript" title="typescript icons">Typescript</a> #Typescript</p>
+<p>   #Typescript</p>
 <p>#Axios</p>
 
 <h2> Installation </h2>
