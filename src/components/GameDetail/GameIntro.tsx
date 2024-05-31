@@ -1,5 +1,5 @@
 import optimizedImg from "../../services/image-url";
-import { GameDetails } from "../Games/GameDetail";
+import { GameDetails } from "../../services/gameDetail";
 import PlatformIcons from "../Games/PlatformIcons";
 import GameGenres from "./GameGenres";
 
