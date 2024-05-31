@@ -1,4 +1,4 @@
-import { Tag } from "../Games/GameDetail";
+import { Tag } from "../../services/gameDetail";
 
 interface Props {
   tag: Tag[];
