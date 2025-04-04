@@ -35,4 +35,4 @@ This site does not store any files on our server, we only linked to the media wh
 <p>3: Install dependencies:- <code>npm install</code></p>
 <p>4: Run the Project:- <code>npm run dev</code></p>
 <br />
-<p> Take a look at it to the deployed website <a href="https://gamefront.vercel.app"> GameFront </a> </p>
+<p> Take a look at it the deployed website <a href="https://gamefront.vercel.app"> GameFront </a> </p>
